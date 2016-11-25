@@ -60,7 +60,7 @@
             android:layout_height="wrap_content"
             android:inputType="phone"
             android:ems="9"
-            android:id="@+id/editText"
+            android:id="@+id/editTextContacto"
             android:textSize="26dp"
             android:background="#f0f0f0"
             />

@@ -6,14 +6,23 @@
     android:layout_height="match_parent"
 
     tools:context="com.isec.boxreminder.MainActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="#DDDDDD">
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/menuLayout1">
+        android:id="@+id/menuLayout1"
+        android:gravity="right">
 
+        <Button
+            android:id ="@+id/menuButtonSettings"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/circular_button"
+            android:padding="15dp"
+            />
     </LinearLayout>
 
     <LinearLayout
@@ -35,7 +44,7 @@
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:id="@+id/menuLayout4">
 
     </LinearLayout>
@@ -43,8 +52,9 @@
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:id="@+id/menuLayout5">
 
     </LinearLayout>
+
 </LinearLayout>

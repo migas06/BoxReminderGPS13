@@ -78,25 +78,28 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="horizontal">
             <TextView
                 android:text="@string/def_AtivVoz"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/TextViewdSetVoz"
                 android:layout_weight="1"
-                android:gravity="left"
                 android:textColor="#999999"
                 android:textStyle="normal|bold"
-                android:textSize="26sp" />
+                android:textSize="26sp"
+                android:gravity="left" />
 
             <CheckBox
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/checkBoxVoz" />
+                android:layout_height="wrap_content"
+            android:id="@+id/checkBoxVoz"
+                android:layout_weight="1"
+                android:gravity="right|center_vertical|start"
+                android:layout_width="0dp" />
         </LinearLayout>
 
     </LinearLayout>
+
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"

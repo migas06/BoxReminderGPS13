@@ -11,6 +11,7 @@ public class MainActivity extends Activity
 {
 
     Button next;
+    Button settings;
     Context context;
 
     @Override
@@ -21,11 +22,21 @@ public class MainActivity extends Activity
 
         context = this;
 
-        next = (Button) findViewById(R.id.menuButtonRegistarMedicamento);
+        next     = (Button) findViewById(R.id.menuButtonRegistarMedicamento);
+        settings = (Button) findViewById(R.id.menuButtonSettings);
+
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, InserirRegisto.class);
+                startActivity(intent);
+            }
+        });
+
+        settings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, Definicoes.class);
                 startActivity(intent);
             }
         });

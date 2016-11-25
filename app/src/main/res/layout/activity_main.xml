@@ -22,7 +22,8 @@
             android:layout_height="40dp"
             android:background="@drawable/circular_button"
             android:padding="15dp"
-            android:layout_margin="20dp" />
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp" />
     </LinearLayout>
 
     <LinearLayout
@@ -30,7 +31,26 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/menuLayout2"
-        android:layout_margin="20dp">
+        android:layout_marginBottom="15dp">
+
+        <TextView
+            android:text="@string/app_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/menuTextViewNome"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textColor="#999999"
+            android:textStyle="normal|bold"
+            android:textSize="36sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/menuLayout3"
+        android:layout_margin="30dp">
 
         <Button
             android:text="@string/registarMedicamento"
@@ -39,27 +59,7 @@
             android:id="@+id/menuButtonRegistarMedicamento"
             android:background="@drawable/round_corners_button"
             android:layout_weight="1"
-            android:layout_margin="20dp"
-            android:textColor="#999999"
-            android:textStyle="normal|bold"
-            android:textSize="20sp" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/menuLayout3"
-        android:layout_margin="20dp">
-
-        <Button
-            android:text="@string/verRegistos"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/menuButtonVerRegistos"
-            android:background="@drawable/round_corners_button"
-            android:layout_weight="1"
-            android:layout_margin="20dp"
+            android:layout_margin="0dp"
             android:textColor="#999999"
             android:textStyle="normal|bold"
             android:textSize="20sp" />
@@ -70,8 +70,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/menuLayout4"
-        android:layout_margin="20dp">
+        android:layout_margin="30dp">
 
+        <Button
+            android:text="@string/verRegistos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/menuButtonVerRegistos"
+            android:background="@drawable/round_corners_button"
+            android:layout_weight="1"
+            android:layout_margin="0dp"
+            android:textColor="#999999"
+            android:textStyle="normal|bold"
+            android:textSize="20sp" />
     </LinearLayout>
 
     <LinearLayout
@@ -79,8 +90,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/menuLayout5"
-        android:layout_margin="20dp">
+        android:layout_margin="30dp">
 
+        <Button
+            android:text="@string/sair"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/menuButtonSair"
+            android:background="@drawable/round_corners_button"
+            android:layout_weight="1"
+            android:layout_margin="0dp"
+            android:textColor="#999999"
+            android:textStyle="normal|bold"
+            android:textSize="20sp" />
     </LinearLayout>
 
 </LinearLayout>

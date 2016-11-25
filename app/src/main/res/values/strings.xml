@@ -6,7 +6,7 @@
 
     <string name="definicoes">Definições</string>
     <string name="def_cEmer">Contacto de Emergencia</string>
-    <string name="def_AtivVoz">Ativar voz:</string>
+    <string name="def_AtivVoz">Ativar voz</string>
     <string name="voltar">Voltar</string>
 
     <string-array name="QuantidadeMedidas">

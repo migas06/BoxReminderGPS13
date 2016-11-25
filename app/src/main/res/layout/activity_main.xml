@@ -49,7 +49,28 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/menuLayout3">
+        android:id="@+id/menuLayout3"
+        android:layout_margin="20dp">
+
+        <Button
+            android:text="@string/verRegistos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/menuButtonVerRegistos"
+            android:background="@drawable/round_corners_button"
+            android:layout_weight="1"
+            android:layout_margin="20dp"
+            android:textColor="#999999"
+            android:textStyle="normal|bold"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/menuLayout4"
+        android:layout_margin="20dp">
 
     </LinearLayout>
 
@@ -57,15 +78,8 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/menuLayout4">
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/menuLayout5">
+        android:id="@+id/menuLayout5"
+        android:layout_margin="20dp">
 
     </LinearLayout>
 

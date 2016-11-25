@@ -9,8 +9,16 @@
     <string name="def_AtivVoz">Ativar voz</string>
     <string name="voltar">Voltar</string>
 
+    <string name="proximo">Próximo</string>
+
+    <!-- Quantidade Layout -->
+
+
+
     <string-array name="QuantidadeMedidas">
         <item>Unidade</item>
         <item>mg/L</item>
     </string-array>
+
+
 </resources>

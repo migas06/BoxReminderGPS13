@@ -3,4 +3,9 @@
     <string name="registarMedicamento">Registar Medicamento</string>
     <string name="verRegistos">Ver Registos</string>
     <string name="sair">Sair</string>
+
+    <string-array name="QuantidadeMedidas">
+        <item>Unidade</item>
+        <item>mg/L</item>
+    </string-array>
 </resources>

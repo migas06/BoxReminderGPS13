@@ -17,6 +17,7 @@
         </activity>
         <activity android:name=".InserirRegisto" />
         <activity android:name=".InserirQuantidade"></activity>
+        <activity android:name=".Definicoes"></activity>
     </application>
 
 </manifest>

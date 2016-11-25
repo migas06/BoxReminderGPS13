@@ -12,19 +12,111 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/definicoesLayout2"
-        android:layout_marginTop="40dp"
-        android:layout_marginBottom="15dp">
+        android:id="@+id/definicoesLayout1"
+        android:layout_marginTop="60dp"
+        android:layout_marginBottom="35dp">
 
         <TextView
-            android:text="@string/app_name"
+            android:text="@string/definicoes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/menuTextViewNome"
+            android:id="@+id/TextViewDefinicoes"
             android:layout_weight="1"
             android:gravity="center"
             android:textColor="#999999"
             android:textStyle="normal|bold"
             android:textSize="36sp" />
     </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/definicoesLayout2"
+        android:layout_marginTop="30dp">
+
+        <TextView
+            android:text="@string/def_cEmer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/TextViewdcEmer"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textColor="#999999"
+            android:textStyle="normal|bold"
+            android:textSize="26sp" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/definicoesLayout3"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginLeft="25dp">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="phone"
+            android:ems="9"
+            android:id="@+id/editText"
+            android:textSize="26dp"
+            android:background="#f0f0f0"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/definicoesLayout4"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="25dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <TextView
+                android:text="@string/def_AtivVoz"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/TextViewdSetVoz"
+                android:layout_weight="1"
+                android:gravity="left"
+                android:textColor="#999999"
+                android:textStyle="normal|bold"
+                android:textSize="26sp" />
+
+            <CheckBox
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/checkBoxVoz" />
+        </LinearLayout>
+
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/definicoesLayout5"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="70dp">
+
+        <Button
+            android:text="@string/voltar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/menuButtonRegistarMedicamento"
+            android:background="@drawable/round_corners_button"
+            android:layout_weight="1"
+            android:layout_margin="0dp"
+            android:textColor="#999999"
+            android:textStyle="normal|bold"
+            android:textSize="20sp" />
+    </LinearLayout>
+
 </LinearLayout>

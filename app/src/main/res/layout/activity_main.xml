@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/menuLayout1"
-        android:gravity="right">
+        android:gravity="end">
 
         <Button
             android:id ="@+id/menuButtonSettings"
@@ -22,15 +22,27 @@
             android:layout_height="40dp"
             android:background="@drawable/circular_button"
             android:padding="15dp"
-            />
+            android:layout_margin="20dp" />
     </LinearLayout>
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/menuLayout2">
+        android:id="@+id/menuLayout2"
+        android:layout_margin="20dp">
 
+        <Button
+            android:text="@string/registarMedicamento"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/menuButtonRegistarMedicamento"
+            android:background="@drawable/round_corners_button"
+            android:layout_weight="1"
+            android:layout_margin="20dp"
+            android:textColor="#999999"
+            android:textStyle="normal|bold"
+            android:textSize="20sp" />
     </LinearLayout>
 
     <LinearLayout

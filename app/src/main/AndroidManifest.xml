@@ -18,7 +18,9 @@
         <activity android:name=".InserirRegisto" />
         <activity android:name=".InserirQuantidade" />
         <activity android:name=".Definicoes" />
-        <activity android:name=".Data"></activity>
+        <activity android:name=".Data" />
+        <activity android:name=".VerRegistos" />
+        <activity android:name=".DetalhesMedicamento"></activity>
     </application>
 
 </manifest>

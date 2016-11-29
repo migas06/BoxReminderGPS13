@@ -39,13 +39,17 @@
             android:layout_height="match_parent"
             android:focusable="false"
             android:layout_weight="9"
+            android:id="@+id/editTextDataInicio"
         />
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:id="@+id/imagemDataInicio"
             android:layout_weight="1"
             android:src="@drawable/calendar"/>
     </LinearLayout>
+
+    <!-- HORA & MINUTOS -->
 
     <TextView
         android:layout_width="match_parent"
@@ -63,6 +67,7 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="match_parent"
+
             android:id="@+id/horas"
             />
 
@@ -74,12 +79,17 @@
             />
     </LinearLayout>
 
+
+    <!-- SPINNER OPCOES -->
     <Spinner
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:id="@+id/spinnerRepeticao"
         android:entries="@array/Repetir">
     </Spinner>
 
+
+    <!-- Dias da semana -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -158,5 +168,60 @@
             />
     </LinearLayout>
 
+    <!-- DATA LIMITE -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:text="@string/dataLimite"/>
+
+        <Switch
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:id="@+id/switchDataLimite"/>
+    </LinearLayout>
+
+    <!-- DATA FIM -->
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/dataFinal"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="10">
+
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:focusable="false"
+            android:id="@+id/editTextDataFim"
+            android:layout_weight="9"
+            />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/imagemDataFim"
+            android:src="@drawable/calendar"/>
+    </LinearLayout>
+
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/next"
+        android:text="@string/proximo"/>
 
 </LinearLayout>

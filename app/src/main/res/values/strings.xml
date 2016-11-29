@@ -23,7 +23,7 @@
 
     <string name="data">Data</string>
     <string name="dataInicio">Data Inicial</string>
-    <string name="dataFinal">Data Final</string>
+    <string name="dataFinal">Repetir Até</string>
     <string name="hora">Hora</string>
 
     <string-array name="Repetir">
@@ -33,4 +33,5 @@
         <item>Mensalmente</item>
     </string-array>
 
+    <string name="dataLimite">Data Limite</string>
 </resources>

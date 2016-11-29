@@ -20,10 +20,14 @@ import static android.R.attr.onClick;
 
 public class Data extends Activity {
 
-    Calendar c = Calendar.getInstance();
-    int startYear = c.get(Calendar.YEAR);
+    Calendar c     = Calendar.getInstance();
+    int startYear  = c.get(Calendar.YEAR);
     int startMonth = c.get(Calendar.MONTH);
-    int startDay = c.get(Calendar.DAY_OF_MONTH);
+    int startDay   = c.get(Calendar.DAY_OF_MONTH);
+
+    //TRUE PARA DATA INICIAL
+    //FALSE PARA DATA FINAL
+    boolean change;
 
     ImageView dataInicio;
     ImageView dataFim;
@@ -39,19 +43,22 @@ public class Data extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_data);
 
-
+        //Declaração de variaveis
         editTextDataInicio = (EditText) findViewById(R.id.editTextDataInicio);
         editTextDataFim    = (EditText) findViewById(R.id.editTextDataFim);
 
         editTextDataInicio.setText(startDay + " - " + startMonth + " - " + startYear);
-        editTextDataInicio.setText(startDay+1 + " - " + startMonth + " - " + startYear);
+        editTextDataInicio.setText(startDay + " - " + startMonth + " - " + startYear);
 
         dataInicio = (ImageView) findViewById(R.id.imagemDataInicio);
         dataFim    = (ImageView) findViewById(R.id.imagemDataFim);
 
+
+        //DEFENIÇãO DOS LISTENERS DAS DATAS
         dataInicio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                change = true;
                 DialogFragment dialogFragment = new StartDatePicker();
                 dialogFragment.show(getFragmentManager(), "start_date_picker");
             }
@@ -60,16 +67,28 @@ public class Data extends Activity {
         dataFim.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                change = false;
                 DialogFragment dialogFragment = new StartDatePicker();
                 dialogFragment.show(getFragmentManager(), "start_date_picker");
             }
         });
 
 
+        /**
+         *
+         * CRIAR MECANISMO PARA COLOCAR DATA INICIO SEMPRE ANTERIOR A DATA FIM
+         * sugestão, criar variaves data para datafim e datainicio respetivamente
+         *
+         * */
+
         next = (Button) findViewById(R.id.next);
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                //CODIGO PARA CRIAR UM MEDICAMENTO
+                //INSERIR NO FICHEIRO DE TEXTO
+
                 Intent intent = new Intent(context, MainActivity.class);
                 startActivity(intent);
                 finish();
@@ -77,23 +96,29 @@ public class Data extends Activity {
         });
     }
 
+
+    private void update() {
+        if (change == true)
+            editTextDataInicio.setText(startDay + " - " + startMonth + " - " + startYear);
+        else
+            editTextDataFim.setText(startDay + " - " + startMonth + " - " + startYear);
+    }
+
+
+    //INNER CLASS QUE GERA UM FRAGMENTO EM QUE O UTILIZADOR PODE ESCOLHER A DATA
     class StartDatePicker extends DialogFragment implements DatePickerDialog.OnDateSetListener{
 
         @Override
         public Dialog onCreateDialog(Bundle savedInstanceState) {
-            // TODO Auto-generated method stub
-            // Use the current date as the default date in the picker
             DatePickerDialog dialog = new DatePickerDialog(Data.this, this, startYear, startMonth, startDay);
             return dialog;
-
         }
-        public void onDateSet(DatePicker view, int year, int monthOfYear,
-                              int dayOfMonth) {
-            // TODO Auto-generated method stub
-            // Do something with the date chosen by the user
+
+        public void onDateSet(DatePicker view, int year, int monthOfYear,int dayOfMonth) {
             startYear = year;
-            startMonth = monthOfYear;
+            startMonth = monthOfYear+1; //POR ALGUM MOTIVO O NUMERO DO MES APARECE ATRASADO.
             startDay = dayOfMonth;
+            update();
         }
     }
 }

@@ -9,7 +9,7 @@
     </item>
     <item android:state_pressed="true">
         <shape android:shape="oval">
-            <stroke android:color="#EEEEEE" android:width="4dp" />
+            <stroke android:color="#EEEEEE" android:width="5dp" />
             <solid android:color="#999999"/>
             <size android:width="40dp" android:height="40dp"/>
         </shape>

@@ -1,4 +1,4 @@
-package com.isec.boxreminder;
+package com.isec.boxreminder.Classes;
 
 
 import java.util.ArrayList;

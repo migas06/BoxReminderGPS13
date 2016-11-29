@@ -4,81 +4,92 @@
     android:id="@+id/activity_inserir_registo"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.isec.boxreminder.InserirRegisto"
     android:orientation="vertical"
     android:background="#DDDDDD">
 
-    <TextView
+    <LinearLayout
+        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/nomeMedicamento"
-        android:textSize="48sp"
-        android:textAlignment="center" />
+        android:layout_margin="15dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/nomeMedicamento"
+            android:textSize="36sp"
+            android:textAlignment="center"
+            android:textStyle="normal|bold"
+            android:textColor="#999999"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginRight="30dp"
+        android:layout_marginLeft="30dp">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:singleLine="false"
+            android:selectAllOnFocus="false"
+            android:hint="Nome do medicamento..." />
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <!-- Text Box -->
-
-        <LinearLayout
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:layout_margin="30dp">
+        <Button
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:orientation="vertical">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="@string/nomeMedicamento"/>
+            android:layout_height="wrap_content"
+            android:text="@string/gravar"
+            android:background="@drawable/round_corners_button"
+            android:layout_margin="0dp"
+            android:textStyle="normal|bold"
+            android:textSize="20sp"
+            android:textColor="#999999" />
+    </LinearLayout>
 
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
-        </LinearLayout>
-
-
-        <!-- Gravar -->
-
-        <LinearLayout
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:layout_margin="30dp">
+        <Button
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:orientation="vertical">
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="@string/gravar"/>
-        </LinearLayout>
+            android:layout_height="wrap_content"
+            android:text="@string/reproduzir"
+            android:background="@drawable/round_corners_button"
+            android:layout_margin="0dp"
+            android:textStyle="normal|bold"
+            android:textSize="20sp"
+            android:textColor="#999999" />
+    </LinearLayout>
 
-        <LinearLayout
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:layout_margin="30dp">
+        <Button
+            android:id="@+id/next"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:orientation="vertical">
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="@string/reproduzir"/>
-        </LinearLayout>
-
-        <!-- Próximo -->
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:orientation="vertical">
-            <Button
-                android:id="@+id/next"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="@string/proximo"/>
-        </LinearLayout>
+            android:layout_height="wrap_content"
+            android:text="@string/proximo"
+            android:background="@drawable/round_corners_button"
+            android:layout_margin="0dp"
+            android:textStyle="normal|bold"
+            android:textSize="20sp"
+            android:textColor="#999999" />
     </LinearLayout>
 
 </LinearLayout>

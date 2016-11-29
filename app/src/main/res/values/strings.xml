@@ -9,16 +9,28 @@
     <string name="def_AtivVoz">Ativar voz</string>
     <string name="voltar">Voltar</string>
 
+    <string name="nomeMedicamento">Nome do Medicamento</string>
     <string name="proximo">Próximo</string>
+    <string name="gravar">Gravar</string>
+    <string name="reproduzir">Reproduzir</string>
 
-    <!-- Quantidade Layout -->
-
-
+    <string name="quantidade">Quantidade</string>
 
     <string-array name="QuantidadeMedidas">
         <item>Unidade</item>
         <item>mg/L</item>
     </string-array>
 
+    <string name="data">Data</string>
+    <string name="dataInicio">Data Inicial</string>
+    <string name="dataFinal">Data Final</string>
+    <string name="hora">Hora</string>
+
+    <string-array name="Repetir">
+        <item>Escolher Opções</item>
+        <item>Semanalmente</item>
+        <item>Diáriamente</item>
+        <item>Mensalmente</item>
+    </string-array>
 
 </resources>

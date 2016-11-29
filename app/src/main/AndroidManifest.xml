@@ -16,8 +16,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".InserirRegisto" />
-        <activity android:name=".InserirQuantidade"></activity>
-        <activity android:name=".Definicoes"></activity>
+        <activity android:name=".InserirQuantidade" />
+        <activity android:name=".Definicoes" />
+        <activity android:name=".Data"></activity>
     </application>
 
 </manifest>

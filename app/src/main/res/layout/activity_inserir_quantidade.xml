@@ -15,7 +15,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Quantidade"
+        android:text="@string/quantidade"
         android:textSize="48sp"
         android:textAlignment="center" />
 
@@ -41,7 +41,8 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/proximo"/>
+        android:text="@string/proximo"
+        android:id="@+id/next"/>
 
 
 </LinearLayout>

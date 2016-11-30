@@ -50,6 +50,7 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:id="@+id/buttonGravar"
             android:text="@string/gravar"
             android:background="@drawable/round_corners_button"
             android:layout_margin="0dp"
@@ -68,6 +69,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/reproduzir"
+            android:id="@+id/buttonReproduzir"
             android:background="@drawable/round_corners_button"
             android:layout_margin="0dp"
             android:textStyle="normal|bold"

@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/activity_data"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_horizontal_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
     android:background="#DDDDDD"
     tools:context="com.isec.boxreminder.Data"
     android:orientation="vertical">
@@ -16,7 +21,8 @@
         android:gravity="center"
         android:textColor="#999999"
         android:textStyle="normal|bold"
-        android:textSize="36sp" />
+        android:textSize="36sp"
+        android:id="@+id/textView" />
 
     <!-- Data Inicio -->
     <LinearLayout
@@ -26,15 +32,17 @@
         android:orientation="vertical">
 
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="326dp"
             android:layout_height="wrap_content"
+            android:textColor="#999999"
             android:text="@string/dataInicio"/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:weightSum="10">
+            android:weightSum="10"
+            android:paddingBottom="10dp">
 
 
             <EditText
@@ -42,13 +50,14 @@
                 android:layout_height="match_parent"
                 android:focusable="false"
                 android:layout_weight="9"
+                android:textColor="#999999"
                 android:id="@+id/editTextDataInicio"
                 />
+
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/imagemDataInicio"
-                android:layout_weight="1"
                 android:src="@drawable/calendar"/>
         </LinearLayout>
 
@@ -66,28 +75,28 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="#999999"
             android:text="@string/hora"/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="10">
+            android:orientation="horizontal">
 
 
             <EditText
-                android:layout_width="0dp"
-                android:layout_weight="1"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:minEms="2"
+                android:hint="hh"
                 android:id="@+id/horas"
                 />
 
             <EditText
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:minEms="2"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:minEms="2"
+                android:hint="mm"
                 android:id="@+id/minutos"
                 />
         </LinearLayout>
@@ -100,6 +109,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
+        android:textColor="#999999"
         android:id="@+id/spinnerRepeticao"
         android:entries="@array/Repetir">
     </Spinner>
@@ -197,6 +207,8 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:textColor="#999999"
             android:text= "@string/dataLimite"/>
 
         <Switch
@@ -217,13 +229,16 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="#999999"
             android:text="@string/dataFinal"/>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
             android:orientation="horizontal"
-            android:weightSum="10">
+            android:weightSum="10"
+            android:paddingBottom="10dp">
 
 
             <EditText
@@ -231,29 +246,32 @@
                 android:layout_height="match_parent"
                 android:focusable="false"
                 android:id="@+id/editTextDataFim"
+                android:textColor="#999999"
                 android:layout_weight="9"
                 />
+
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:id="@+id/imagemDataFim"
-                android:src="@drawable/calendar"/>
+                android:src="@drawable/calendar" />
         </LinearLayout>
 
     </LinearLayout>
 
-
     <Button
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:background="@drawable/round_corners_button"
         android:layout_weight="1"
+        android:background="@drawable/round_corners_button"
         android:textColor="#999999"
         android:textStyle="normal|bold"
         android:textSize="20sp"
         android:layout_margin="0dp"
         android:id="@+id/next"
-        android:text="@string/proximo"/>
+        android:text="@string/proximo" />
+
+
 
 </LinearLayout>

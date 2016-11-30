@@ -14,7 +14,13 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 
+import com.isec.boxreminder.Classes.Medicamento;
+
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 import static android.R.attr.onClick;
 
@@ -34,18 +40,27 @@ public class Data extends Activity {
 
     EditText editTextDataInicio;
     EditText editTextDataFim;
+    EditText editTextHora;
+    EditText editTextMin;
 
     Button next;
     Context context = this;
+
+    Medicamento medicamento;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_data);
 
+        //RECEBER O MEDICAMENTO DA ATIVIDADE ANTERIOR
+        medicamento = (Medicamento) getIntent().getSerializableExtra("medicamento");
+
         //Declaração de variaveis
         editTextDataInicio = (EditText) findViewById(R.id.editTextDataInicio);
         editTextDataFim    = (EditText) findViewById(R.id.editTextDataFim);
+        editTextHora       = (EditText) findViewById(R.id.horas);
+        editTextMin        = (EditText) findViewById(R.id.minutos);
 
         editTextDataInicio.setText(startDay + " - " + startMonth + " - " + startYear);
         editTextDataInicio.setText(startDay + " - " + startMonth + " - " + startYear);
@@ -86,8 +101,9 @@ public class Data extends Activity {
             @Override
             public void onClick(View view) {
 
-                //CODIGO PARA CRIAR UM MEDICAMENTO
-                //INSERIR NO FICHEIRO DE TEXTO
+                //CODIGO PARA ADICIONAR DADOS AO MEDICAMENTO
+                addAoMedicamento();
+                inserirNoFicheiro();
 
                 Intent intent = new Intent(context, MainActivity.class);
                 startActivity(intent);
@@ -96,7 +112,31 @@ public class Data extends Activity {
         });
     }
 
+    private void addAoMedicamento() {
 
+        //CRIAR DATA E HORA
+        SimpleDateFormat formatoData = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat formatoHora = new SimpleDateFormat("HH:mm");
+        try {
+            Date dataInicio = formatoData.parse(editTextDataInicio.getText().toString());
+            Date dataFim = formatoData.parse(editTextDataFim.getText().toString());
+            Date hora = formatoHora.parse(editTextHora.getText().toString() + ":" + editTextMin.getText().toString());
+
+            medicamento.setDataInicio(dataInicio);
+            medicamento.setDataFim(dataFim);
+            medicamento.setHora(hora);
+
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+    }
+
+    //INSERIR NOVO MEDICAMENTO NO FICHEIRO
+    private void inserirNoFicheiro() {
+        /*TODO HERE*/
+    }
+
+    //COLOCA DATAS CORRETAS NAS TEXTBOX
     private void update() {
         if (change == true)
             editTextDataInicio.setText(startDay + " - " + startMonth + " - " + startYear);

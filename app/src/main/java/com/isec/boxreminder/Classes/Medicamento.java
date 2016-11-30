@@ -1,56 +1,100 @@
 package com.isec.boxreminder.Classes;
 
 
+import android.text.format.Time;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 
 /**
- * Created by migue on 29/11/2016.
+ * Created by miguel on 29/11/2016.
  */
 
-public class Medicamento {
+public class Medicamento implements Serializable{
     String nome;
     Boolean RepeticoesMensal;
     Boolean[] RepeticoesSemanal;
     Date DataInicio;
     Date DataFim;
-    Float Quantidade;
+    Date Hora;
+    String Quantidade;
     String TipoQuantidade;
     String CaminhoGrav;
 
-    public Medicamento(){}
-    void setNome(String nome){
+    public Medicamento(){
+
+    }
+
+    public Date getHora() {
+        return Hora;
+    }
+
+    public void setHora(Date hora) {
+        Hora = hora;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
         this.nome = nome;
     }
-    void setRepeticoes(int op, ArrayList<Boolean> ar){
-        //????????????????????
-        if(op>0&&op<=2){
 
-        }
-        if(op==3){
+    public Boolean getRepeticoesMensal() {
+        return RepeticoesMensal;
+    }
 
-        }
+    public void setRepeticoesMensal(Boolean repeticoesMensal) {
+        RepeticoesMensal = repeticoesMensal;
     }
-    void setDataInicio(Date d){
-        DataInicio = d;
+
+    public Boolean[] getRepeticoesSemanal() {
+        return RepeticoesSemanal;
     }
-    void setDataFim(Date d){
-        DataFim = d;
+
+    public void setRepeticoesSemanal(Boolean[] repeticoesSemanal) {
+        RepeticoesSemanal = repeticoesSemanal;
     }
-    public void setQuantidade(Float quantidade) {
+
+    public Date getDataInicio() {
+        return DataInicio;
+    }
+
+    public void setDataInicio(Date dataInicio) {
+        DataInicio = dataInicio;
+    }
+
+    public Date getDataFim() {
+        return DataFim;
+    }
+
+    public void setDataFim(Date dataFim) {
+        DataFim = dataFim;
+    }
+
+    public String getQuantidade() {
+        return Quantidade;
+    }
+
+    public void setQuantidade(String quantidade) {
         Quantidade = quantidade;
     }
-    void setTipoQuantidade(String tq){
-        TipoQuantidade = tq;
-    }
-    void setCaminhoGrav(String cg){
-        CaminhoGrav=cg;
-    }
-    String getNome(){return nome;}
-    String getTipoQuantidade(){return TipoQuantidade;}
-    String getCaminhoGrav(){return CaminhoGrav;}
-    Date getDataInicio(){return DataInicio;}
-    Date getDataFim(){return DataFim;}
-    Float getQuantidade(){return Quantidade;}
 
+    public String getTipoQuantidade() {
+        return TipoQuantidade;
+    }
+
+    public void setTipoQuantidade(String tipoQuantidade) {
+        TipoQuantidade = tipoQuantidade;
+    }
+
+    public String getCaminhoGrav() {
+        return CaminhoGrav;
+    }
+
+    public void setCaminhoGrav(String caminhoGrav) {
+        CaminhoGrav = caminhoGrav;
+    }
 }

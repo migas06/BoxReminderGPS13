@@ -24,17 +24,24 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+import static android.R.attr.dial;
 import static android.R.attr.onClick;
 
 public class Data extends Activity {
+
+    final SimpleDateFormat formatoData = new SimpleDateFormat("dd-MM-yyyy");
 
     Calendar c     = Calendar.getInstance();
     int startYear  = c.get(Calendar.YEAR);
     int startMonth = c.get(Calendar.MONTH);
     int startDay   = c.get(Calendar.DAY_OF_MONTH);
 
-    //TRUE PARA DATA INICIAL
-    //FALSE PARA DATA FINAL
+    Date dateDataInicio;
+    Date dateDataFim;
+    Date dateHora;
+
+    //TRUE  PARA DATA_INICIAL
+    //FALSE PARA DATA_FINAL
     boolean change;
 
     ImageView dataInicio;
@@ -55,6 +62,12 @@ public class Data extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_data);
 
+        try{
+            dateDataInicio = dateDataFim = formatoData.parse(startDay + "-" + startMonth + "-" + startYear);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
         //RECEBER O MEDICAMENTO DA ATIVIDADE ANTERIOR
         medicamento = (Medicamento) getIntent().getSerializableExtra("medicamento");
 
@@ -65,7 +78,9 @@ public class Data extends Activity {
         editTextMin        = (EditText) findViewById(R.id.minutos);
 
         editTextDataInicio.setText(startDay + "-" + startMonth + "-" + startYear);
-        editTextDataInicio.setText(startDay + "-" + startMonth + "-" + startYear);
+        editTextDataFim.setText(startDay + "-" + startMonth + "-" + startYear);
+
+
 
         dataInicio = (ImageView) findViewById(R.id.imagemDataInicio);
         dataFim    = (ImageView) findViewById(R.id.imagemDataFim);
@@ -94,7 +109,7 @@ public class Data extends Activity {
         /**
          *
          * CRIAR MECANISMO PARA COLOCAR DATA INICIO SEMPRE ANTERIOR A DATA FIM
-         * sugestão, criar variaves data para datafim e datainicio respetivamente
+         * sugestão: criar variaves data para datafim e datainicio respetivamente
          *
          * */
 
@@ -107,7 +122,6 @@ public class Data extends Activity {
                 addAoMedicamento();
                 inserirNoFicheiro();
 
-
                 Intent intent = new Intent(context, MainActivity.class);
                 startActivity(intent);
                 finish();
@@ -118,19 +132,16 @@ public class Data extends Activity {
     private void addAoMedicamento() {
 
         //CRIAR DATA E HORA
-        SimpleDateFormat formatoData = new SimpleDateFormat("dd-MM-yyyy");
         SimpleDateFormat formatoHora = new SimpleDateFormat("HH:mm");
         try {
-            Date dataInicio = formatoData.parse(editTextDataInicio.getText().toString());
-            Date dataFim = formatoData.parse(editTextDataFim.getText().toString());
-            Date hora = formatoHora.parse(editTextHora.getText().toString() + ":" + editTextMin.getText().toString());
+            dateHora = formatoHora.parse(editTextHora.getText().toString() + ":" + editTextMin.getText().toString());
 
-            medicamento.setDataInicio(dataInicio);
-            medicamento.setDataFim(dataFim);
-            medicamento.setHora(hora);
+            medicamento.setDataInicio(dateDataInicio);
+            medicamento.setDataFim(dateDataFim);
+            medicamento.setHora(dateHora);
 
         } catch (ParseException e) {
-            e.printStackTrace();
+            Toast.makeText(context, "Tem de preencher todos os campos, "+e.toString(), Toast.LENGTH_LONG).show();
         }
     }
 
@@ -140,28 +151,49 @@ public class Data extends Activity {
     }
 
     //COLOCA DATAS CORRETAS NAS TEXTBOX
-    private void update() {
-        if (change == true)
-            editTextDataInicio.setText(startDay + "-" + startMonth + "-" + startYear);
-        else
-            editTextDataFim.setText(startDay + "-" + startMonth + "-" + startYear);
+    private void setData(int year, int month, int day) {
+
+        String sData = day+"-"+month+"-"+year;
+
+        //CRIAR DATA E HORA
+        try {
+            if (change == true){
+                editTextDataInicio.setText(sData);
+                dateDataInicio = formatoData.parse(sData);
+            }else {
+                dateDataFim = formatoData.parse(sData);
+                editTextDataFim.setText(sData);
+            }
+
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
     }
 
 
     //INNER CLASS QUE GERA UM FRAGMENTO EM QUE O UTILIZADOR PODE ESCOLHER A DATA
-    class StartDatePicker extends DialogFragment implements DatePickerDialog.OnDateSetListener{
+    class StartDatePicker extends DialogFragment implements DatePickerDialog.OnDateSetListener {
+        long millisecs;
 
         @Override
         public Dialog onCreateDialog(Bundle savedInstanceState) {
+
             DatePickerDialog dialog = new DatePickerDialog(Data.this, this, startYear, startMonth, startDay);
+
+            //INDICA QUE A DATA MINIMA É IGUAL OU SUPERIOR À DATA INICIO!
+            if(change==false) {
+                millisecs = dateDataInicio.getTime();
+                dialog.getDatePicker().setMinDate(millisecs);
+            }
+
             return dialog;
         }
 
-        public void onDateSet(DatePicker view, int year, int monthOfYear,int dayOfMonth) {
-            startYear = year;
-            startMonth = monthOfYear+1; //POR ALGUM MOTIVO O NUMERO DO MES APARECE ATRASADO.
-            startDay = dayOfMonth;
-            update();
+        public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+
+            //POR ALGUM MOTIVO O NUMERO DO MES APARECE ATRASADO.
+            setData(year, monthOfYear + 1, dayOfMonth);
         }
     }
 }

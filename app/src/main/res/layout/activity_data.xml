@@ -11,76 +11,95 @@
     <TextView
         android:text="@string/data"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:gravity="center"
         android:textColor="#999999"
         android:textStyle="normal|bold"
         android:textSize="36sp" />
 
     <!-- Data Inicio -->
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/dataInicio"/>
-
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="10">
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
 
-
-        <EditText
+        <TextView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:focusable="false"
-            android:layout_weight="9"
-            android:id="@+id/editTextDataInicio"
-        />
-        <ImageView
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/imagemDataInicio"
-            android:layout_weight="1"
-            android:src="@drawable/calendar"/>
+            android:text="@string/dataInicio"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="10">
+
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:focusable="false"
+                android:layout_weight="9"
+                android:id="@+id/editTextDataInicio"
+                />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/imagemDataInicio"
+                android:layout_weight="1"
+                android:src="@drawable/calendar"/>
+        </LinearLayout>
+
+
     </LinearLayout>
 
     <!-- HORA & MINUTOS -->
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/hora"/>
-
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="10">
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/hora"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="10">
 
 
-        <EditText
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="match_parent"
+            <EditText
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:minEms="2"
+                android:id="@+id/horas"
+                />
 
-            android:id="@+id/horas"
-            />
+            <EditText
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:minEms="2"
+                android:layout_height="match_parent"
+                android:id="@+id/minutos"
+                />
+        </LinearLayout>
 
-        <EditText
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="match_parent"
-            android:id="@+id/minutos"
-            />
     </LinearLayout>
 
 
     <!-- SPINNER OPCOES -->
     <Spinner
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:id="@+id/spinnerRepeticao"
         android:entries="@array/Repetir">
     </Spinner>
@@ -89,7 +108,8 @@
     <!-- Dias da semana -->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:orientation="horizontal">
 
         <CheckBox
@@ -169,7 +189,8 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:orientation="horizontal">
 
         <TextView
@@ -187,37 +208,51 @@
 
     <!-- DATA FIM -->
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/dataFinal"/>
-
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="10">
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
 
-
-        <EditText
+        <TextView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:focusable="false"
-            android:id="@+id/editTextDataFim"
-            android:layout_weight="9"
-            />
-        <ImageView
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:id="@+id/imagemDataFim"
-            android:src="@drawable/calendar"/>
+            android:text="@string/dataFinal"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="10">
+
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:focusable="false"
+                android:id="@+id/editTextDataFim"
+                android:layout_weight="9"
+                />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/imagemDataFim"
+                android:src="@drawable/calendar"/>
+        </LinearLayout>
+
     </LinearLayout>
 
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@drawable/round_corners_button"
+        android:layout_weight="1"
+        android:textColor="#999999"
+        android:textStyle="normal|bold"
+        android:textSize="20sp"
+        android:layout_margin="0dp"
         android:id="@+id/next"
         android:text="@string/proximo"/>
 

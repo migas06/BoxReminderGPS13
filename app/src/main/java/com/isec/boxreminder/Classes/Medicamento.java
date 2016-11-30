@@ -13,25 +13,15 @@ import java.util.Date;
 
 public class Medicamento implements Serializable{
     String nome;
-    Boolean RepeticoesMensal;
-    Boolean[] RepeticoesSemanal;
-    Date DataInicio;
-    Date DataFim;
-    Date Hora;
-    String Quantidade;
-    String TipoQuantidade;
-    String CaminhoGrav;
+    Date dataInicio;
+    Date dataFim;
+    Date hora;
+    String quantidade;
+    String tipoQuantidade;
+    String caminhoGravacao;
 
     public Medicamento(){
 
-    }
-
-    public Date getHora() {
-        return Hora;
-    }
-
-    public void setHora(Date hora) {
-        Hora = hora;
     }
 
     public String getNome() {
@@ -42,59 +32,51 @@ public class Medicamento implements Serializable{
         this.nome = nome;
     }
 
-    public Boolean getRepeticoesMensal() {
-        return RepeticoesMensal;
-    }
-
-    public void setRepeticoesMensal(Boolean repeticoesMensal) {
-        RepeticoesMensal = repeticoesMensal;
-    }
-
-    public Boolean[] getRepeticoesSemanal() {
-        return RepeticoesSemanal;
-    }
-
-    public void setRepeticoesSemanal(Boolean[] repeticoesSemanal) {
-        RepeticoesSemanal = repeticoesSemanal;
-    }
-
     public Date getDataInicio() {
-        return DataInicio;
+        return dataInicio;
     }
 
     public void setDataInicio(Date dataInicio) {
-        DataInicio = dataInicio;
+        this.dataInicio = dataInicio;
     }
 
     public Date getDataFim() {
-        return DataFim;
+        return dataFim;
     }
 
     public void setDataFim(Date dataFim) {
-        DataFim = dataFim;
+        this.dataFim = dataFim;
+    }
+
+    public Date getHora() {
+        return hora;
+    }
+
+    public void setHora(Date hora) {
+        this.hora = hora;
     }
 
     public String getQuantidade() {
-        return Quantidade;
+        return quantidade;
     }
 
     public void setQuantidade(String quantidade) {
-        Quantidade = quantidade;
+        this.quantidade = quantidade;
     }
 
     public String getTipoQuantidade() {
-        return TipoQuantidade;
+        return tipoQuantidade;
     }
 
     public void setTipoQuantidade(String tipoQuantidade) {
-        TipoQuantidade = tipoQuantidade;
+        this.tipoQuantidade = tipoQuantidade;
     }
 
-    public String getCaminhoGrav() {
-        return CaminhoGrav;
+    public String getCaminhoGravacao() {
+        return caminhoGravacao;
     }
 
-    public void setCaminhoGrav(String caminhoGrav) {
-        CaminhoGrav = caminhoGrav;
+    public void setCaminhoGravacao(String caminhoGravacao) {
+        this.caminhoGravacao = caminhoGravacao;
     }
 }

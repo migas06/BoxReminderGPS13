@@ -94,7 +94,7 @@ public class InserirRegisto extends Activity
             public void onClick(View view) {
 
             medicamento.setNome(editTextNomeMedicamento.getText().toString());
-            medicamento.setCaminhoGrav(nomeFicheiro);
+            medicamento.setCaminhoGravacao(nomeFicheiro);
 
             Intent intent = new Intent(context, InserirQuantidade.class);
             intent.putExtra("medicamento", medicamento);

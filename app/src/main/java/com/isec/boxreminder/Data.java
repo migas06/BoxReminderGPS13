@@ -81,7 +81,6 @@ public class Data extends Activity {
         editTextDataFim.setText(startDay + "-" + startMonth + "-" + startYear);
 
 
-
         dataInicio = (ImageView) findViewById(R.id.imagemDataInicio);
         dataFim    = (ImageView) findViewById(R.id.imagemDataFim);
 
@@ -104,14 +103,6 @@ public class Data extends Activity {
                 dialogFragment.show(getFragmentManager(), "start_date_picker");
             }
         });
-
-
-        /**
-         *
-         * CRIAR MECANISMO PARA COLOCAR DATA INICIO SEMPRE ANTERIOR A DATA FIM
-         * sugestão: criar variaves data para datafim e datainicio respetivamente
-         *
-         * */
 
         next = (Button) findViewById(R.id.next);
         next.setOnClickListener(new View.OnClickListener() {

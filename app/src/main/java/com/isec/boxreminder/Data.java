@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.isec.boxreminder.Classes.Medicamento;
 
@@ -105,6 +106,8 @@ public class Data extends Activity {
                 addAoMedicamento();
                 inserirNoFicheiro();
 
+                Toast.makeText(context, medicamento.getDataInicio() + " e " + medicamento.getDataFim() + " e finalemnte" + medicamento.getHora(), Toast.LENGTH_LONG).show();
+
                 Intent intent = new Intent(context, MainActivity.class);
                 startActivity(intent);
                 finish();
@@ -133,7 +136,7 @@ public class Data extends Activity {
 
     //INSERIR NOVO MEDICAMENTO NO FICHEIRO
     private void inserirNoFicheiro() {
-        /*TODO HERE*/
+        /*SOME CODE HERE PLEASE*/
     }
 
     //COLOCA DATAS CORRETAS NAS TEXTBOX

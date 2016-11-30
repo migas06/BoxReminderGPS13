@@ -13,6 +13,7 @@ public class MainActivity extends Activity
     Button next;
     Button settings;
     Button exit;
+    Button registos;
     Context context;
 
     @Override
@@ -25,6 +26,7 @@ public class MainActivity extends Activity
 
         next     = (Button) findViewById(R.id.menuButtonRegistarMedicamento);
         settings = (Button) findViewById(R.id.menuButtonSettings);
+        registos = (Button) findViewById(R.id.menuButtonVerRegistos);
         exit     = (Button) findViewById(R.id.menuButtonSair);
 
         exit.setOnClickListener(new View.OnClickListener() {
@@ -46,6 +48,13 @@ public class MainActivity extends Activity
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, Definicoes.class);
+                startActivity(intent);
+            }
+        });
+        registos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, VerRegistos.class);
                 startActivity(intent);
             }
         });

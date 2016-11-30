@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.media.Image;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -63,8 +64,8 @@ public class Data extends Activity {
         editTextHora       = (EditText) findViewById(R.id.horas);
         editTextMin        = (EditText) findViewById(R.id.minutos);
 
-        editTextDataInicio.setText(startDay + " - " + startMonth + " - " + startYear);
-        editTextDataInicio.setText(startDay + " - " + startMonth + " - " + startYear);
+        editTextDataInicio.setText(startDay + "-" + startMonth + "-" + startYear);
+        editTextDataInicio.setText(startDay + "-" + startMonth + "-" + startYear);
 
         dataInicio = (ImageView) findViewById(R.id.imagemDataInicio);
         dataFim    = (ImageView) findViewById(R.id.imagemDataFim);
@@ -106,7 +107,6 @@ public class Data extends Activity {
                 addAoMedicamento();
                 inserirNoFicheiro();
 
-                Toast.makeText(context, medicamento.getDataInicio() + " e " + medicamento.getDataFim() + " e finalemnte" + medicamento.getHora(), Toast.LENGTH_LONG).show();
 
                 Intent intent = new Intent(context, MainActivity.class);
                 startActivity(intent);
@@ -118,7 +118,7 @@ public class Data extends Activity {
     private void addAoMedicamento() {
 
         //CRIAR DATA E HORA
-        SimpleDateFormat formatoData = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat formatoData = new SimpleDateFormat("dd-MM-yyyy");
         SimpleDateFormat formatoHora = new SimpleDateFormat("HH:mm");
         try {
             Date dataInicio = formatoData.parse(editTextDataInicio.getText().toString());
@@ -142,9 +142,9 @@ public class Data extends Activity {
     //COLOCA DATAS CORRETAS NAS TEXTBOX
     private void update() {
         if (change == true)
-            editTextDataInicio.setText(startDay + " - " + startMonth + " - " + startYear);
+            editTextDataInicio.setText(startDay + "-" + startMonth + "-" + startYear);
         else
-            editTextDataFim.setText(startDay + " - " + startMonth + " - " + startYear);
+            editTextDataFim.setText(startDay + "-" + startMonth + "-" + startYear);
     }
 
 

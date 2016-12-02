@@ -19,6 +19,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.isec.boxreminder.Classes.Gravacao;
 import com.isec.boxreminder.Classes.Medicamento;
 
 import java.io.IOException;
@@ -26,12 +27,10 @@ import java.io.Serializable;
 
 public class InserirRegisto extends Activity
 {
-    Context context;
+    Context context = this;
     Medicamento medicamento;
 
     boolean estadoAGravar = false;
-    MediaRecorder gravacao;
-    MediaPlayer reproducao;
 
     Button buttonGravar;
     Button buttonReproduzir;
@@ -42,21 +41,22 @@ public class InserirRegisto extends Activity
     String nomeFicheiro = Environment.getExternalStorageDirectory().getAbsolutePath()+"/Notifications/";
     String nomeMedicamentoInserido;
 
+    Gravacao novaGravacao;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inserir_registo);
 
-        context = this;
-        medicamento = new Medicamento();
+        medicamento  = new Medicamento();
+        novaGravacao = new Gravacao();
 
         editTextNomeMedicamento = (EditText) findViewById(R.id.nomeMedicamento);
 
         buttonReproduzir    = (Button) findViewById(R.id.buttonReproduzir);
         buttonGravar        = (Button) findViewById(R.id.buttonGravar);
         next                = (Button) findViewById(R.id.next);
-
 
         //LISTENER DO BOTAO DE GRAVAR
         buttonGravar.setOnClickListener(new View.OnClickListener() {
@@ -66,10 +66,12 @@ public class InserirRegisto extends Activity
                 if(!nomeMedicamentoInserido.equals("")) {
                     if (estadoAGravar == false) {
                         nomeFicheiro += nomeMedicamentoInserido+".3gp";
-                        comecaGravar();
+                        novaGravacao.setCaminhoFicheiro(nomeFicheiro);
+                        novaGravacao.comecaGravar();
+                        estadoAGravar = true;
                         buttonGravar.setText("Parar Gravação");
                     }else{
-                        stopGravar();
+                        novaGravacao.stopGravar();
                         buttonGravar.setText("Gravar");
                     }
                 }else
@@ -82,7 +84,7 @@ public class InserirRegisto extends Activity
             @Override
             public void onClick(View view) {
                 if(!nomeMedicamentoInserido.equals(""))
-                    reproduzGravacao();
+                    novaGravacao.reproduzGravacao();
                 else
                     Toast.makeText(context, "Tem de ter uma gravação!", Toast.LENGTH_LONG).show();
             }
@@ -101,42 +103,5 @@ public class InserirRegisto extends Activity
             startActivity(intent);
             }
         });
-    }
-
-    //PARA A GRAVACAO
-    private void stopGravar() {
-        gravacao.stop();
-        gravacao.release();
-        gravacao = null;
-    }
-
-    //INICIA A GRAVACAO
-    private void comecaGravar() {
-            estadoAGravar = true;
-            gravacao = new MediaRecorder();
-            gravacao.setAudioSource(MediaRecorder.AudioSource.MIC);
-            gravacao.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
-            gravacao.setOutputFile(nomeFicheiro);
-            gravacao.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
-
-            try {
-                gravacao.prepare();
-                gravacao.start();
-            } catch (IOException e) {
-                Log.e("GRAVACAO", e.toString());
-            }
-    }
-
-    //REPRODUCAO
-    private void reproduzGravacao(){
-
-        reproducao = new MediaPlayer();
-        try {
-            reproducao.setDataSource(nomeFicheiro);
-            reproducao.prepare();
-            reproducao.start();
-        } catch (IOException e) {
-            Log.e("REPRODUCAO", e.toString());
-        }
     }
 }

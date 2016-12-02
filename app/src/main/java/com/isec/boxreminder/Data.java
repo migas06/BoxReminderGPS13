@@ -110,17 +110,21 @@ public class Data extends Activity {
             public void onClick(View view) {
 
                 //CODIGO PARA ADICIONAR DADOS AO MEDICAMENTO
-                addAoMedicamento();
                 inserirNoFicheiro();
 
-                Intent intent = new Intent(context, MainActivity.class);
-                startActivity(intent);
-                finish();
+                if(addAoMedicamento()){
+                    Intent intent = new Intent(context, MainActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
+                else{
+                    Toast.makeText(context, "Tem de introduzir data e hora válidos", Toast.LENGTH_LONG).show();
+                }
             }
         });
     }
 
-    private void addAoMedicamento() {
+    private boolean addAoMedicamento() {
 
         //CRIAR DATA E HORA
         SimpleDateFormat formatoHora = new SimpleDateFormat("HH:mm");
@@ -132,8 +136,9 @@ public class Data extends Activity {
             medicamento.setHora(dateHora);
 
         } catch (ParseException e) {
-            Toast.makeText(context, "Tem de preencher todos os campos, "+e.toString(), Toast.LENGTH_LONG).show();
+            return false;
         }
+        return true;
     }
 
     //INSERIR NOVO MEDICAMENTO NO FICHEIRO

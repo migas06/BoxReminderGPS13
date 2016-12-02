@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_inicial"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#DDDDDD"
+    tools:context="com.isec.boxreminder.Definicoes">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/definicoesLayout1"
+        android:layout_marginTop="60dp"
+        android:layout_marginBottom="35dp">
+
+        <TextView
+            android:text="@string/app_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/TextViewDefinicoes"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textColor="#999999"
+            android:textStyle="normal|bold"
+            android:textSize="36sp" />
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/definicoesLayout2"
+        android:layout_marginTop="30dp">
+
+        <TextView
+            android:text="@string/def_cEmer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/TextViewdcEmer"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textColor="#999999"
+            android:textStyle="normal|bold"
+            android:textSize="26sp" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/definicoesLayout3"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginLeft="25dp">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="phone"
+            android:ems="9"
+            android:id="@+id/editTextContacto"
+            android:textSize="26dp"
+            android:background="#f0f0f0"
+            />
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/definicoesLayout5"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="250dp">
+
+        <Button
+            android:text="@string/seguinte"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/round_corners_button"
+            android:layout_weight="1"
+            android:layout_margin="0dp"
+            android:textColor="#999999"
+            android:textStyle="normal|bold"
+            android:textSize="20sp"
+            android:id="@+id/definicoesBotaoSeguinte" />
+    </LinearLayout>
+
+</LinearLayout>

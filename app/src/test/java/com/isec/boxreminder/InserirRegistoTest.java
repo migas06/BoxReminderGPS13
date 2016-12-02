@@ -3,12 +3,15 @@ package com.isec.boxreminder;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.JUnit4;
 
 import static org.junit.Assert.*;
 
 /**
  * Created by Miguel on 01-12-2016.
  */
+@RunWith(JUnit4.class)
 public class InserirRegistoTest {
 
     private static InserirRegisto inserirRegisto;

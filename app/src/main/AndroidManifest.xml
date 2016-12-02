@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.isec.boxreminder">
-
+    
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
 
@@ -23,7 +24,17 @@
         <activity android:name=".Definicoes" />
         <activity android:name=".Data" />
         <activity android:name=".VerRegistos" />
-        <activity android:name=".DetalhesMedicamento"></activity>
+        <activity android:name=".DetalhesMedicamento" />
+
+        <receiver android:name=".Widget.SOSPhone">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/sosphone_info" />
+        </receiver>
+
     </application>
 
 </manifest>

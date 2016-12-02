@@ -34,4 +34,7 @@
     </string-array>
 
     <string name="dataLimite">Data Limite</string>
+
+    <string name="appwidget_text"> Chamada SOS </string>
+
 </resources>

@@ -15,7 +15,7 @@ import org.junit.Test;
  * Created by João André on 02/12/2016.
  */
 
-public class DefinicoesTest
+public class DefinicoesUnitTest
 {
     private static Activity definicoes;
 

@@ -12,7 +12,7 @@ import static org.junit.Assert.*;
  * Created by Miguel on 01-12-2016.
  */
 @RunWith(JUnit4.class)
-public class InserirRegistoTest {
+public class InserirRegistoUnitTest {
 
     private static InserirRegisto inserirRegisto;
 

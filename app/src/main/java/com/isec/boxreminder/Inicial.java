@@ -1,5 +1,6 @@
 package com.isec.boxreminder;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -11,7 +12,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class Inicial extends ActionBarActivity {
+import com.isec.boxreminder.Classes.Ficheiro;
+
+public class Inicial extends Activity {
 
 
     Context context;
@@ -40,7 +43,8 @@ public class Inicial extends ActionBarActivity {
                 }
 
                 if((contacto>=200000000 && contacto<=969999999)){
-
+                    Ficheiro ficheiro =new Ficheiro();
+                    ficheiro.escreverFicheiroContacto(contacto);
                     Toast.makeText(context,"Operação bem sucedida", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(context, MainActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

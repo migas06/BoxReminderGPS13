@@ -24,7 +24,7 @@ public class Ficheiro {
     DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
     String linha;
 
-    public void lerFicheiro()  {
+    public String lerFicheiro()  {
 
         try{
             BufferedReader bufferedReader = new BufferedReader(new FileReader(caminho));
@@ -35,7 +35,21 @@ public class Ficheiro {
 
         } catch (FileNotFoundException e){
             Log.d("FICHEIRO", "ERRO NO FICHEIRO DE TEXTO");
+            return "nofile";
         } catch (IOException e){
+            Log.d("FICHEIRO", "ERRO NO FICHEIRO DE TEXTO");
+        }
+        return "sucesso";
+    }
+
+    public void escreverFicheiroContacto(double contacto){
+        try{
+            BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(caminho));
+            linha = contacto + "\n";
+
+            bufferedWriter.append(linha + "\n");
+            bufferedWriter.close();
+        }catch (IOException e){
             Log.d("FICHEIRO", "ERRO NO FICHEIRO DE TEXTO");
         }
     }

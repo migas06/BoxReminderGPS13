@@ -36,11 +36,9 @@
     </string-array>
 
     <string name="dataLimite">Data Limite</string>
-<<<<<<< HEAD
+
 
     <string name="appwidget_text"> Chamada SOS </string>
 
-=======
     <string name="seguinte">Seguinte</string>
->>>>>>> origin/master
 </resources>

@@ -12,7 +12,7 @@ import static org.junit.Assert.*;
  */
 public class InserirRegistoTest {
 
-    InserirRegisto inserirRegisto;
+    private InserirRegisto inserirRegisto;
 
     @Before
     public void setUp() throws Exception {
@@ -20,7 +20,8 @@ public class InserirRegistoTest {
     }
 
     @Test
-    public void onCreate() throws Exception {
+    public void onCreateTest() throws Exception
+    {
 
     }
 

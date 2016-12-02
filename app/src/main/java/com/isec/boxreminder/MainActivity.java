@@ -63,7 +63,7 @@ public class MainActivity extends Activity {
 
 //Read text from file
         StringBuilder text = new StringBuilder();
-/*
+
         try {
             BufferedReader br = new BufferedReader(new FileReader(file));
             String line;
@@ -78,7 +78,7 @@ public class MainActivity extends Activity {
             Intent intent = new Intent(context, Inicial.class);
             startActivity(intent);
         }
-*/
+
         exit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

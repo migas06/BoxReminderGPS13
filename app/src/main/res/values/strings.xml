@@ -1,4 +1,6 @@
 <resources>
+    <string name="nomeficheiro">DadosBR.txt</string>
+
     <string name="app_name">BoxReminder</string>
     <string name="registarMedicamento">Registar Medicamento</string>
     <string name="verRegistos">Ver Registos</string>
@@ -34,7 +36,11 @@
     </string-array>
 
     <string name="dataLimite">Data Limite</string>
+<<<<<<< HEAD
 
     <string name="appwidget_text"> Chamada SOS </string>
 
+=======
+    <string name="seguinte">Seguinte</string>
+>>>>>>> origin/master
 </resources>

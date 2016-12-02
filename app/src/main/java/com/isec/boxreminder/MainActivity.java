@@ -17,11 +17,6 @@ public class MainActivity extends Activity {
     Button registos;
 
     Context context;
-    /**
-     * ATTENTION: This was auto-generated to implement the App Indexing API.
-     * See https://g.co/AppIndexing/AndroidStudio for more information.
-     */
-    //private GoogleApiClient client;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,22 +34,7 @@ public class MainActivity extends Activity {
             Intent intent = new Intent(context, Inicial.class);
             startActivity(intent);
         }
-/*
-        try {
-            BufferedReader br = new BufferedReader(new FileReader(file));
-            String line;
 
-            while ((line = br.readLine()) != null) {
-                text.append(line);
-                text.append('\n');
-            }
-            br.close();
-        }
-        catch (Exception  e) {
-            Intent intent = new Intent(context, Inicial.class);
-            startActivity(intent);
-        }
-*/
         exit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

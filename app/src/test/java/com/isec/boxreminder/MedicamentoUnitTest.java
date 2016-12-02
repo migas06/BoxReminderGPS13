@@ -13,13 +13,12 @@ import java.util.Date;
 /**
  * Created by João André on 02/12/2016.
  */
-
 public class MedicamentoUnitTest
 {
-    private Medicamento medicamento;
+    private static Medicamento medicamento;
 
     @BeforeClass
-    public void setUp()
+    public static void setUp()
     {
         medicamento = new Medicamento();
     }
@@ -57,7 +56,7 @@ public class MedicamentoUnitTest
     @Test
     public void dataFimTest() throws AssertionError
     {
-        assertEquals(new Date(2016, 12, 2), medicamento.getDataFim());
+        assertEquals(new Date(2016, 12, 8), medicamento.getDataFim());
     }
 
     @Before
@@ -109,7 +108,7 @@ public class MedicamentoUnitTest
     }
 
     @AfterClass
-    public void finish()
+    public static void finish()
     {
         medicamento = null; // apagar qualquer referência para o objeto ( = apagar)
     }

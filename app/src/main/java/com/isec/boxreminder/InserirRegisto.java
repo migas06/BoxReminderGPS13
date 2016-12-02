@@ -38,10 +38,15 @@ public class InserirRegisto extends Activity
 
     EditText editTextNomeMedicamento;
 
-    String nomeFicheiro = Environment.getExternalStorageDirectory().getAbsolutePath()+"/Notifications/";
+    String nomeFicheiro;
     String nomeMedicamentoInserido;
 
     Gravacao novaGravacao;
+
+    public InserirRegisto()
+    {
+        nomeFicheiro = Environment.getExternalStorageDirectory().getAbsolutePath()+"/Notifications/";
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState)

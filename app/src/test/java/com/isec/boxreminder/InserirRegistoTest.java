@@ -1,8 +1,7 @@
 package com.isec.boxreminder;
 
-import android.media.MediaRecorder;
-
-import org.junit.Before;
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -12,32 +11,41 @@ import static org.junit.Assert.*;
  */
 public class InserirRegistoTest {
 
-    private InserirRegisto inserirRegisto;
+    private static InserirRegisto inserirRegisto;
 
-    @Before
-    public void setUp() throws Exception {
-        inserirRegisto = new InserirRegisto();
+    @BeforeClass
+    public static void setUp()
+    {
+        //inserirRegisto = new InserirRegisto();
     }
 
     @Test
-    public void onCreateTest() throws Exception
+    public void onCreateTest() throws AssertionError
     {
 
     }
 
     @Test
-    public void stopGravar() throws Exception {
+    public void stopGravar() throws AssertionError
+    {
 
     }
 
     @Test
-    public void comecaGravar() throws Exception {
+    public void comecaGravar() throws AssertionError
+    {
 
     }
 
     @Test
-    public void reproduzGravacao() throws Exception {
+    public void reproduzGravacao() throws AssertionError
+    {
 
     }
 
+    @AfterClass
+    public static void finish()
+    {
+        inserirRegisto = null;
+    }
 }

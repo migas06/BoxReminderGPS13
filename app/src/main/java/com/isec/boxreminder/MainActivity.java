@@ -7,6 +7,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.isec.boxreminder.Classes.Ficheiro;
+
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
 public class MainActivity extends Activity
 {
 
@@ -14,6 +19,7 @@ public class MainActivity extends Activity
     Button settings;
     Button exit;
     Button registos;
+
     Context context;
 
     @Override

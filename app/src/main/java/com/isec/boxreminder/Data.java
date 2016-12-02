@@ -16,6 +16,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.isec.boxreminder.Classes.Ficheiro;
 import com.isec.boxreminder.Classes.Medicamento;
 
 import java.text.DateFormat;
@@ -109,7 +110,6 @@ public class Data extends Activity {
             @Override
             public void onClick(View view) {
 
-                //CODIGO PARA ADICIONAR DADOS AO MEDICAMENTO
                 inserirNoFicheiro();
 
                 if(addAoMedicamento()){
@@ -143,7 +143,8 @@ public class Data extends Activity {
 
     //INSERIR NOVO MEDICAMENTO NO FICHEIRO
     private void inserirNoFicheiro() {
-        /*SOME CODE HERE PLEASE*/
+        Ficheiro ficheiro = new Ficheiro();
+        ficheiro.escreverFicheiro(medicamento);
     }
 
     //COLOCA DATAS CORRETAS NAS TEXTBOX

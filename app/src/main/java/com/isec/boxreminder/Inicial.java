@@ -18,7 +18,7 @@ public class Inicial extends Activity {
 
 
     Context context;
-    double contacto;
+    long contacto;
 
 
     @Override
@@ -36,7 +36,7 @@ public class Inicial extends Activity {
             public void onClick(View view) {
 
                 try {
-                    contacto = Double.parseDouble(mEditText.getText().toString());
+                    contacto = Long.parseLong(mEditText.getText().toString());
                 }catch (Exception e){
                     Log.d("Definicoes","not a number " + e);
                     Toast.makeText(context,"Introduza valores númericos", Toast.LENGTH_SHORT).show();

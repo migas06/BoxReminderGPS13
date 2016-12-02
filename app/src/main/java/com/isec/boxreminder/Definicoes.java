@@ -11,10 +11,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.isec.boxreminder.Classes.Ficheiro;
+
 public class Definicoes extends Activity
 {
     Context context;
-    double contacto;
+    long contacto;
+    Ficheiro ficheiro = new Ficheiro();
 
 
     @Override
@@ -25,6 +28,9 @@ public class Definicoes extends Activity
 
         final EditText mEditText = (EditText) findViewById(R.id.editTextContacto);
 
+        EditText editTextContacto = (EditText) findViewById(R.id.editTextContacto) ;
+
+        editTextContacto.setText( ficheiro.lerContacto());
 
         context = this;
         ((Button)findViewById(R.id.definicoesBotaoVoltar)).setOnClickListener(new View.OnClickListener() {
@@ -33,7 +39,7 @@ public class Definicoes extends Activity
             public void onClick(View view) {
 
                 try {
-                    contacto = Double.parseDouble(mEditText.getText().toString());
+                    contacto = Long.parseLong(mEditText.getText().toString());
                 }catch (Exception e){
                     Log.d("Definicoes","not a number " + e);
                     Toast.makeText(context,"Introduza valores númericos", Toast.LENGTH_SHORT).show();
@@ -60,4 +66,5 @@ public class Definicoes extends Activity
             }
         });
     }
+
 }

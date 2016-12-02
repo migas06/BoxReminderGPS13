@@ -21,6 +21,7 @@ import java.util.ArrayList;
 public class Ficheiro {
     ArrayList<Medicamento> lista;
     String caminho = Environment.getExternalStorageDirectory().getAbsolutePath()+"/MyMeds.txt";
+    String caminhoContacto = Environment.getExternalStorageDirectory().getAbsolutePath()+"/MyContact.txt";
     DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
     String linha;
 
@@ -29,7 +30,7 @@ public class Ficheiro {
         try{
             BufferedReader bufferedReader = new BufferedReader(new FileReader(caminho));
             while ((linha = bufferedReader.readLine()) != null) {
-                    Log.d("READ", linha);
+                Log.d("READ", linha);
             }
             bufferedReader.close();
 
@@ -42,9 +43,25 @@ public class Ficheiro {
         return "sucesso";
     }
 
-    public void escreverFicheiroContacto(double contacto){
+    public String lerContacto()  {
+
         try{
-            BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(caminho));
+            BufferedReader bufferedReader = new BufferedReader(new FileReader(caminhoContacto));
+            linha = bufferedReader.readLine();
+            bufferedReader.close();
+
+        } catch (FileNotFoundException e){
+            Log.d("FICHEIRO", "ERRO NO FICHEIRO DE TEXTO");
+            return "nofile";
+        } catch (IOException e){
+            Log.d("FICHEIRO", "ERRO NO FICHEIRO DE TEXTO");
+        }
+        return linha;
+    }
+
+    public void escreverFicheiroContacto(long contacto){
+        try{
+            BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(caminhoContacto));
             linha = contacto + "\n";
 
             bufferedWriter.append(linha + "\n");

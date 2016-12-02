@@ -30,7 +30,7 @@ public class MainActivity extends Activity {
         registos = (Button) findViewById(R.id.menuButtonVerRegistos);
         exit = (Button) findViewById(R.id.menuButtonSair);
 
-        if(ficheiro.lerFicheiro().equals("nofile")){
+        if(ficheiro.lerContacto().equals("nofile")){
             Intent intent = new Intent(context, Inicial.class);
             startActivity(intent);
         }

@@ -33,7 +33,6 @@ public class InserirQuantidade extends Activity
         editTextQuantidade = (EditText) findViewById(R.id.quantidade);
         spinnerUnidade     = (Spinner)  findViewById(R.id.spinnerUnidade);
 
-
         context = this;
         next = (Button) findViewById(R.id.next);
         next.setOnClickListener(new View.OnClickListener() {

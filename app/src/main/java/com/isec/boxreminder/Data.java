@@ -34,7 +34,7 @@ public class Data extends Activity {
 
     Calendar c     = Calendar.getInstance();
     int startYear  = c.get(Calendar.YEAR);
-    int startMonth = c.get(Calendar.MONTH);
+    int startMonth = c.get(Calendar.MONTH)+1;     //POR ALGUM MOTIVO O NUMERO ASSOCIADO AO Mês É MENOS 1 (PE Jan = 0, Fev = 1, etc)
     int startDay   = c.get(Calendar.DAY_OF_MONTH);
 
     Date dateDataInicio;
@@ -110,16 +110,30 @@ public class Data extends Activity {
             @Override
             public void onClick(View view) {
 
+            //verifica se
+            if(editTextHora.getText().toString().equals("") || editTextMin.getText().toString().equals(""))
+            {
+                Toast.makeText(context, "Os campos data e hora têm de ser preenchidos", Toast.LENGTH_LONG).show();
+            //verifica se os numeros introduzidos nas horas e minutos são validos
+            }else if(Integer.parseInt(editTextHora.getText().toString())<24 && Integer.parseInt(editTextHora.getText().toString())>0
+                    && Integer.parseInt(editTextMin.getText().toString())<60
+                    && Integer.parseInt(editTextMin.getText().toString())>=0)
+            {
+
                 inserirNoFicheiro();
 
-                if(addAoMedicamento()){
+                if (addAoMedicamento()) {
                     Intent intent = new Intent(context, MainActivity.class);
                     startActivity(intent);
                     finish();
-                }
-                else{
+                } else {
                     Toast.makeText(context, "Tem de introduzir data e hora válidos", Toast.LENGTH_LONG).show();
                 }
+            }else{
+                Toast.makeText(context, "Tem de introduzir uma hora válida", Toast.LENGTH_LONG).show();
+                editTextHora.setText("");
+                editTextMin.setText("");
+            }
             }
         });
     }
@@ -190,7 +204,7 @@ public class Data extends Activity {
         public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
 
             //POR ALGUM MOTIVO O NUMERO DO MES APARECE ATRASADO.
-            setData(year, monthOfYear + 1, dayOfMonth);
+            setData(year, monthOfYear, dayOfMonth);
         }
     }
 }

@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.isec.boxreminder.Classes.Medicamento;
 
@@ -40,13 +41,16 @@ public class InserirQuantidade extends Activity
             public void onClick(View view) {
 
                 //ADICIONAR NOVOS CAMPOS ASSOCIADOS À ATIVIDADE
-                medicamento.setQuantidade(editTextQuantidade.getText().toString());
-                medicamento.setTipoQuantidade(spinnerUnidade.getSelectedItem().toString());
+                if(!editTextQuantidade.getText().toString().equals("")){
+                    medicamento.setQuantidade(editTextQuantidade.getText().toString());
+                    medicamento.setTipoQuantidade(spinnerUnidade.getSelectedItem().toString());
 
-                Intent intent = new Intent(context, Data.class);
-                intent.putExtra("medicamento", medicamento);
-                startActivity(intent);
-                finish();
+                    Intent intent = new Intent(context, Data.class);
+                    intent.putExtra("medicamento", medicamento);
+                    startActivity(intent);
+                }else{
+                    Toast.makeText(context, "Tem de introduzir a quantidade do medicamento", Toast.LENGTH_LONG).show();
+                }
             }
         });
     }

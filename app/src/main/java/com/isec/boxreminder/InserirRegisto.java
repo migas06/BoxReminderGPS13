@@ -88,12 +88,16 @@ public class InserirRegisto extends Activity
             @Override
             public void onClick(View view) {
 
-            medicamento.setNome(editTextNomeMedicamento.getText().toString());
-            medicamento.setCaminhoGravacao(nomeFicheiro);
+            if (!editTextNomeMedicamento.getText().toString().equals("")){
+                medicamento.setNome(editTextNomeMedicamento.getText().toString());
+                medicamento.setCaminhoGravacao(nomeFicheiro);
 
-            Intent intent = new Intent(context, InserirQuantidade.class);
-            intent.putExtra("medicamento", medicamento);
-            startActivity(intent);
+                Intent intent = new Intent(context, InserirQuantidade.class);
+                intent.putExtra("medicamento", medicamento);
+                startActivity(intent);
+            }else{
+                Toast.makeText(context, "Tem de introduzir um nome do medicamento", Toast.LENGTH_LONG).show();
+            }
             }
         });
     }

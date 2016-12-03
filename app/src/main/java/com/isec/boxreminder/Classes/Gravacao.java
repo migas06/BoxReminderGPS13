@@ -16,14 +16,9 @@ public class Gravacao {
 
     String caminhoFicheiro;
 
-    public Gravacao(){
-        gravacao = new MediaRecorder();
-        reproducao = new MediaPlayer();
-    }
-
     //INICIA A GRAVACAO
     public void comecaGravar() {
-
+        gravacao = new MediaRecorder();
         gravacao.setAudioSource(MediaRecorder.AudioSource.MIC);
         gravacao.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
         gravacao.setOutputFile(caminhoFicheiro);
@@ -48,6 +43,7 @@ public class Gravacao {
     public void reproduzGravacao(){
 
         try {
+            reproducao = new MediaPlayer();
             reproducao.setDataSource(caminhoFicheiro);
             reproducao.prepare();
             reproducao.start();

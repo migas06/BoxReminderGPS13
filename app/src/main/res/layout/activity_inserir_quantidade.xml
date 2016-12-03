@@ -28,14 +28,16 @@
             android:id="@+id/quantidade"
             android:layout_width="0dp"
             android:layout_weight="2"
+            android:inputType="number"
+            android:textColor="#999999"
             android:layout_height="wrap_content" />
 
         <Spinner
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:id="@+id/spinnerUnidade"
             android:textColor="#999999"
+            android:id="@+id/spinnerUnidade"
             android:entries="@array/QuantidadeMedidas"/>
 
     </LinearLayout>

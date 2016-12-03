@@ -37,6 +37,7 @@
             android:layout_height="wrap_content"
             android:singleLine="false"
             android:selectAllOnFocus="false"
+            android:textColor="#999999"
             android:id="@+id/nomeMedicamento"
             android:hint="Nome do medicamento..." />
     </LinearLayout>

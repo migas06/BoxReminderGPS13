@@ -21,11 +21,13 @@ import java.util.ArrayList;
 public class Ficheiro {
 
     ArrayList<Medicamento> lista;
+
     String caminho = Environment.getExternalStorageDirectory().getAbsolutePath()+"/MyMeds.txt";
     String caminhoContacto = Environment.getExternalStorageDirectory().getAbsolutePath()+"/MyContact.txt";
 
     DateFormat hourFormat = new SimpleDateFormat("HH:mm");
     DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+
     String linha;
 
     public String lerFicheiro()  {
@@ -38,7 +40,7 @@ public class Ficheiro {
             bufferedReader.close();
 
         } catch (FileNotFoundException e){
-            Log.d("FICHEIRO", "ERRO NO FICHEIRO DE TEXTO");
+            Log.d("FICHEIRO", "ERRO, FICHEIRO NÃO EXISTE");
             return "nofile";
         } catch (IOException e){
             Log.d("FICHEIRO", "ERRO NO FICHEIRO DE TEXTO");
@@ -77,11 +79,14 @@ public class Ficheiro {
     public void escreverFicheiro(Medicamento medicamento){
 
         try{
-            BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(caminho));
+            BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(caminho, true));
             linha = medicamento.getNome().toString() + "\n";
             linha += medicamento.getQuantidade().toString() + " ";
             linha += medicamento.getTipoQuantidade().toString() + "\n";
-            linha += medicamento.getCaminhoGravacao().toString() + "\n";
+            if(medicamento.getCaminhoGravacao().contains(".3gp")){
+                linha += medicamento.getCaminhoGravacao().toString() + "\n";
+            }else
+                linha += "sem toque de notificação";
             for(int i=0; i<7; i++)
                 linha += medicamento.getRepeticao(i) + " ";
 
@@ -89,12 +94,10 @@ public class Ficheiro {
             linha += dateFormat.format(medicamento.getDataInicio()) + " " + dateFormat.format(medicamento.getDataFim()) +"\n\n";
 
 
-            bufferedWriter.append(linha + "\n");
+            bufferedWriter.append(linha);
             bufferedWriter.close();
         }catch (IOException e){
             Log.d("FICHEIRO", "ERRO NO FICHEIRO DE TEXTO");
         }
     }
-
-    public ArrayList<Medicamento> getLista() {return lista;}
 }

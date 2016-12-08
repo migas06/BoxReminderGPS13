@@ -4,12 +4,22 @@ import android.os.Environment;
 import android.util.Log;
 import android.widget.Toast;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.ObjectInput;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutput;
+import java.io.ObjectOutputStream;
+import java.io.OutputStream;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -20,30 +30,31 @@ import java.util.ArrayList;
 
 public class Ficheiro {
 
-    ArrayList<Medicamento> lista;
+    ArrayList<Medicamento> lista = new ArrayList<Medicamento>();
 
-    String caminho = Environment.getExternalStorageDirectory().getAbsolutePath()+"/MyMeds.txt";
+    String caminho = Environment.getExternalStorageDirectory().getAbsolutePath()+"/MyMeds.obj";
     String caminhoContacto = Environment.getExternalStorageDirectory().getAbsolutePath()+"/MyContact.txt";
-
-    DateFormat hourFormat = new SimpleDateFormat("HH:mm");
-    DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 
     String linha;
 
     public String lerFicheiro()  {
 
         try{
-            BufferedReader bufferedReader = new BufferedReader(new FileReader(caminho));
-            while ((linha = bufferedReader.readLine()) != null) {
-                Log.d("READ", linha);
-            }
-            bufferedReader.close();
+            InputStream file = new FileInputStream(caminho);
+            InputStream inputStream = new BufferedInputStream(file);
+            ObjectInput objectInput = new ObjectInputStream(inputStream);
+
+            lista = (ArrayList<Medicamento>)objectInput.readObject();
+            System.out.println(lista.get(0).getNome());
+
 
         } catch (FileNotFoundException e){
             Log.d("FICHEIRO", "ERRO, FICHEIRO NÃO EXISTE");
             return "nofile";
         } catch (IOException e){
             Log.d("FICHEIRO", "ERRO NO FICHEIRO DE TEXTO");
+        } catch (ClassNotFoundException e) {
+            Log.d("FICHEIRO", "CLASSE NAO CONHECIDA");
         }
         return "sucesso";
     }
@@ -76,7 +87,7 @@ public class Ficheiro {
         }
     }
 
-    public void escreverFicheiro(Medicamento medicamento){
+    /*public void escreverFicheiro(Medicamento medicamento){
 
         try{
             BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(caminho, true));
@@ -99,5 +110,28 @@ public class Ficheiro {
         }catch (IOException e){
             Log.d("FICHEIRO", "ERRO NO FICHEIRO DE TEXTO");
         }
+    }*/
+
+    public void escreverFicheiro(Medicamento medicamento){
+
+        lerFicheiro();
+
+        try{
+            OutputStream file = new FileOutputStream(caminho);
+            OutputStream outputStream = new BufferedOutputStream(file);
+            ObjectOutput objectOutput = new ObjectOutputStream(outputStream);
+
+            lista.add(medicamento);
+
+            objectOutput.writeObject(lista);
+            objectOutput.close();
+
+        }catch (IOException e){
+            Log.d("FICHEIRO", "ERRO NO FICHEIRO");
+        }
+    }
+
+    public ArrayList<Medicamento> getLista() {
+        return lista;
     }
 }

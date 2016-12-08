@@ -19,9 +19,12 @@ import java.util.ArrayList;
  */
 
 public class Ficheiro {
+
     ArrayList<Medicamento> lista;
     String caminho = Environment.getExternalStorageDirectory().getAbsolutePath()+"/MyMeds.txt";
     String caminhoContacto = Environment.getExternalStorageDirectory().getAbsolutePath()+"/MyContact.txt";
+
+    DateFormat hourFormat = new SimpleDateFormat("HH:mm");
     DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
     String linha;
 
@@ -79,6 +82,12 @@ public class Ficheiro {
             linha += medicamento.getQuantidade().toString() + " ";
             linha += medicamento.getTipoQuantidade().toString() + "\n";
             linha += medicamento.getCaminhoGravacao().toString() + "\n";
+            for(int i=0; i<7; i++)
+                linha += medicamento.getRepeticao(i) + " ";
+
+            linha += "\n"+ hourFormat.format(medicamento.getHora()) + "\n";
+            linha += dateFormat.format(medicamento.getDataInicio()) + " " + dateFormat.format(medicamento.getDataFim()) +"\n\n";
+
 
             bufferedWriter.append(linha + "\n");
             bufferedWriter.close();

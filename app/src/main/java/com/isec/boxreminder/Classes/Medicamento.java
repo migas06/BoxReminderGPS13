@@ -20,9 +20,9 @@ public class Medicamento implements Serializable{
     String tipoQuantidade;
     String caminhoGravacao;
 
-    public Medicamento(){
+    boolean [] repeticao = new boolean[7];
 
-    }
+    //GETTERS AND SETTERS
 
     public String getNome() {
         return nome;
@@ -78,5 +78,13 @@ public class Medicamento implements Serializable{
 
     public void setCaminhoGravacao(String caminhoGravacao) {
         this.caminhoGravacao = caminhoGravacao;
+    }
+
+    public boolean getRepeticao( int position) {
+        return repeticao[position];
+    }
+
+    public void setRepeticao(boolean[] repeticao) {
+            this.repeticao = repeticao;
     }
 }

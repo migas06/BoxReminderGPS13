@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -22,7 +23,10 @@ import com.isec.boxreminder.Classes.Medicamento;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.Date;
 
 import static android.R.attr.dial;
@@ -53,6 +57,8 @@ public class Data extends Activity {
     EditText editTextHora;
     EditText editTextMin;
 
+    CheckBox segunda, terca, quarta, quinta, sexta, sabado, domingo;
+
     Button next;
     Context context = this;
 
@@ -81,6 +87,13 @@ public class Data extends Activity {
         editTextDataInicio.setText(startDay + "-" + startMonth + "-" + startYear);
         editTextDataFim.setText(startDay + "-" + startMonth + "-" + startYear);
 
+        segunda = (CheckBox) findViewById(R.id.segunda);
+        terca = (CheckBox) findViewById(R.id.terca);
+        quarta = (CheckBox) findViewById(R.id.quarta);
+        quinta = (CheckBox) findViewById(R.id.quinta);
+        sexta = (CheckBox) findViewById(R.id.sexta);
+        sabado = (CheckBox) findViewById(R.id.sabado);
+        domingo = (CheckBox) findViewById(R.id.domingo);
 
         dataInicio = (ImageView) findViewById(R.id.imagemDataInicio);
         dataFim    = (ImageView) findViewById(R.id.imagemDataFim);
@@ -119,10 +132,8 @@ public class Data extends Activity {
                     && Integer.parseInt(editTextMin.getText().toString())<60
                     && Integer.parseInt(editTextMin.getText().toString())>=0)
             {
-
-                inserirNoFicheiro();
-
                 if (addAoMedicamento()) {
+                    inserirNoFicheiro();
                     Intent intent = new Intent(context, MainActivity.class);
                     startActivity(intent);
                     finish();
@@ -148,11 +159,33 @@ public class Data extends Activity {
             medicamento.setDataInicio(dateDataInicio);
             medicamento.setDataFim(dateDataFim);
             medicamento.setHora(dateHora);
+            medicamento.setRepeticao(setRepeticoes());
 
         } catch (ParseException e) {
             return false;
         }
         return true;
+    }
+
+    private boolean [] setRepeticoes() {
+        boolean [] repeticoesList = new boolean[7];
+
+        if(segunda.isChecked())
+            repeticoesList[0] = true;
+        if(terca.isChecked())
+            repeticoesList[1] = true;
+        if(quarta.isChecked())
+            repeticoesList[2] = true;
+        if(quinta.isChecked())
+            repeticoesList[3] = true;
+        if(sexta.isChecked())
+            repeticoesList[4] = true;
+        if(sabado.isChecked())
+            repeticoesList[5] = true;
+        if(domingo.isChecked())
+            repeticoesList[6] = true;
+
+        return repeticoesList;
     }
 
     //INSERIR NOVO MEDICAMENTO NO FICHEIRO

@@ -30,6 +30,7 @@ import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
+import java.util.List;
 
 import static android.R.attr.dial;
 import static android.R.attr.onClick;
@@ -227,7 +228,20 @@ public class Data extends Activity {
     private void inserirNoFicheiro() {
         Ficheiro ficheiro = new Ficheiro();
         ficheiro.lerFicheiro();
-        ficheiro.getLista().add(medicamento);
+
+        List<Medicamento> meds = ficheiro.getLista();
+
+        if(meds.contains(medicamento))
+        {
+            for(int i = 0; i < meds.size(); i++)
+            {
+                if(meds.get(i).equals(medicamento))
+                    meds.set(i, medicamento);
+            }
+        }
+        else
+            meds.add(medicamento);
+
         ficheiro.escreverFicheiro();
     }
 
@@ -274,7 +288,7 @@ public class Data extends Activity {
         public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
 
             //POR ALGUM MOTIVO O NUMERO DO MES APARECE ATRASADO.
-            setData(year, monthOfYear, dayOfMonth);
+            setData(year, monthOfYear + 1, dayOfMonth);
         }
     }
 }

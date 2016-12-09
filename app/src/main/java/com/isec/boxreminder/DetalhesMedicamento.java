@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -86,7 +87,7 @@ public class DetalhesMedicamento extends Activity {
 
                             //Intent intent = new Intent(context, MainActivity.class);
                             //startActivity(intent);
-                            deleteItem();
+                            apagarMedicamento();
                             finish();
                         }
                         return true;
@@ -98,18 +99,15 @@ public class DetalhesMedicamento extends Activity {
         });
     }
 
-    //medicamento está a ser removido da lista
-    //TODO: implementar o mesmo a nível do ficheiro
-    //TODO: -> ou editar o ficheiro diretamente
-    //TODO: -> ou reescrever o ficheiro todo cada vez que se gravar
-    private void deleteItem()
+    private void apagarMedicamento()
     {
         Ficheiro ficheiro = new Ficheiro();
+        ficheiro.lerFicheiro();
         ArrayList<Medicamento> lista = ficheiro.getLista();
 
-        for(Medicamento med : lista)
-            if(med.getNome().equals(medicamento.getNome()))
-                lista.remove(med);
+        lista.remove(medicamento);
+
+        ficheiro.escreverFicheiro();
     }
 
     private String criarFrequencia() {

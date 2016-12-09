@@ -45,8 +45,6 @@ public class Ficheiro {
             ObjectInput objectInput = new ObjectInputStream(inputStream);
 
             lista = (ArrayList<Medicamento>)objectInput.readObject();
-            System.out.println(lista.get(0).getNome());
-
 
         } catch (FileNotFoundException e){
             Log.d("FICHEIRO", "ERRO, FICHEIRO NÃO EXISTE");
@@ -112,16 +110,12 @@ public class Ficheiro {
         }
     }*/
 
-    public void escreverFicheiro(Medicamento medicamento){
-
-        lerFicheiro();
+    public void escreverFicheiro(){
 
         try{
             OutputStream file = new FileOutputStream(caminho);
             OutputStream outputStream = new BufferedOutputStream(file);
             ObjectOutput objectOutput = new ObjectOutputStream(outputStream);
-
-            lista.add(medicamento);
 
             objectOutput.writeObject(lista);
             objectOutput.close();

@@ -12,14 +12,22 @@ import java.util.Date;
  */
 
 public class Medicamento implements Serializable{
-    boolean editar;
-    String nome;
-    Date dataInicio;
-    Date dataFim;
-    Date hora;
-    String quantidade;
-    String tipoQuantidade;
-    String caminhoGravacao;
+    private boolean editar;
+    private String nome;
+    private Date dataInicio;
+    private Date dataFim;
+    private Date hora;
+    private String quantidade;
+    private String tipoQuantidade;
+    private String caminhoGravacao;
+    private int id;
+
+    private static int contador = 0;
+
+    public Medicamento()
+    {
+        id = contador++;
+    }
 
     public boolean isEditar() {return editar;}
 
@@ -93,5 +101,16 @@ public class Medicamento implements Serializable{
 
     public void setRepeticao(boolean[] repeticao) {
             this.repeticao = repeticao;
+    }
+
+    @Override
+    public boolean equals(Object obj)
+    {
+        if(!(obj instanceof Medicamento))
+            return false;
+
+        Medicamento med = (Medicamento) obj;
+
+        return id == med.id;
     }
 }

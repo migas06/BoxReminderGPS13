@@ -21,13 +21,13 @@ import java.util.GregorianCalendar;
 
 public class Alarme {
 
-    Medicamento medicamento;
-    Context context;
+    private Medicamento medicamento;
+    private Context context;
 
-    int idNotificacao = 0;
+    private int idNotificacao = 0;
 
-    NotificationManager notificationManager;
-    boolean notificacaoEstaAtiva = false;
+    private NotificationManager notificationManager;
+    private boolean notificacaoEstaAtiva = false;
 
     public Alarme(Context context, Medicamento medicamento){
         this.context = context;
@@ -77,7 +77,7 @@ public class Alarme {
        Long alertTime = new GregorianCalendar().getTimeInMillis()+5*1000;
        Intent intent = new Intent(context, ReceberAlerta.class);
 
-       AlarmManager alarmManager = (AlarmManager) context.getSystemService(context.ALARM_SERVICE);
+       AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
        alarmManager.set(AlarmManager.RTC_WAKEUP, alertTime,  PendingIntent.getBroadcast(context, 1, intent, PendingIntent.FLAG_UPDATE_CURRENT));
     }
 

@@ -226,7 +226,9 @@ public class Data extends Activity {
     //INSERIR NOVO MEDICAMENTO NO FICHEIRO
     private void inserirNoFicheiro() {
         Ficheiro ficheiro = new Ficheiro();
-        ficheiro.escreverFicheiro(medicamento);
+        ficheiro.lerFicheiro();
+        ficheiro.getLista().add(medicamento);
+        ficheiro.escreverFicheiro();
     }
 
     //COLOCA DATAS CORRETAS NAS TEXTBOX
@@ -272,7 +274,7 @@ public class Data extends Activity {
         public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
 
             //POR ALGUM MOTIVO O NUMERO DO MES APARECE ATRASADO.
-            setData(year, monthOfYear + 1, dayOfMonth);
+            setData(year, monthOfYear, dayOfMonth);
         }
     }
 }

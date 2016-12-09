@@ -15,11 +15,11 @@ import java.text.SimpleDateFormat;
  */
 
 public class Notificacao {
-    Medicamento medicamento;
-    Context context;
-    String mensagem;
+    private Medicamento medicamento;
+    private Context context;
+    private String mensagem;
 
-    java.text.DateFormat hourFormat = new SimpleDateFormat("HH:mm");
+    private java.text.DateFormat hourFormat = new SimpleDateFormat("HH:mm");
 
     public Notificacao(Context context, Medicamento medicamento){
         this.context = context;

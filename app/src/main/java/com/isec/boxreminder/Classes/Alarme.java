@@ -91,7 +91,6 @@ public class Alarme {
         Intent intent = new Intent(context, DetalhesMedicamento.class);
         intent.putExtra("medicamento", medicamento);
 
-<<<<<<< HEAD
         TaskStackBuilder stackBuilder = TaskStackBuilder.create(context);
         stackBuilder.addParentStack(MainActivity.class);
 
@@ -101,17 +100,6 @@ public class Alarme {
         NotificationManager mNotificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
 
         mNotificationManager.notify(0, mBuilder.build());
-=======
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTimeInMillis(System.currentTimeMillis());
-        calendar.set(Calendar.HOUR_OF_DAY, 01);
-/*
-        alarmManager = (AlarmManager)context.getSystemService(Context.ALARM_SERVICE);
-        Intent intent = new Intent(context, AlarmReceiver.class);
-        alarmIntent = PendingIntent.getBroadcast(context, 0, intent, 0);
 
-        alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),
-                AlarmManager.INTERVAL_DAY, alarmIntent);*/
->>>>>>> origin/master
     }
 }

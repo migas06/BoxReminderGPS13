@@ -56,9 +56,6 @@ public class DetalhesMedicamento extends Activity {
 
         String frequencia = criarFrequencia();
         textViewFrequencia.setText(frequencia);
-<<<<<<< HEAD
-=======
-
 
         textViewDataFinal.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -96,7 +93,6 @@ public class DetalhesMedicamento extends Activity {
                 popup.show(); //showing popup menu
             }
         });
->>>>>>> origin/master
     }
 
     private String criarFrequencia() {

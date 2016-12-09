@@ -42,7 +42,12 @@ public class InserirRegisto extends Activity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inserir_registo);
 
-        medicamento  = new Medicamento();
+        medicamento = (Medicamento) getIntent().getSerializableExtra("medicamento");
+
+        if(medicamento == null){
+            medicamento  = new Medicamento();
+        }
+
         novaGravacao = new Gravacao();
 
         editTextNomeMedicamento = (EditText) findViewById(R.id.nomeMedicamento);
@@ -51,6 +56,9 @@ public class InserirRegisto extends Activity
         buttonGravar        = (Button) findViewById(R.id.buttonGravar);
         next                = (Button) findViewById(R.id.next);
 
+        if(medicamento.isEditar()){
+            editTextNomeMedicamento.setText(medicamento.getNome());
+        }
         //LISTENER DO BOTAO DE GRAVAR
         buttonGravar.setOnClickListener(new View.OnClickListener() {
             @Override

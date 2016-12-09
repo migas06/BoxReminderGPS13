@@ -98,6 +98,25 @@ public class Data extends Activity {
         dataInicio = (ImageView) findViewById(R.id.imagemDataInicio);
         dataFim    = (ImageView) findViewById(R.id.imagemDataFim);
 
+        if(medicamento.isEditar()){
+            //editTextDataInicio.setText();
+            DateFormat horaFormato = new SimpleDateFormat("HH");
+            DateFormat minutoFormato = new SimpleDateFormat("mm");
+            DateFormat dataFormato = new SimpleDateFormat("dd/MM/yyyy");
+
+            editTextDataInicio.setText(dataFormato.format(medicamento.getDataInicio()));
+            editTextDataFim.setText(dataFormato.format(medicamento.getDataFim()));
+            editTextHora.setText(horaFormato.format(medicamento.getHora()));
+            editTextMin.setText(minutoFormato.format(medicamento.getHora()));
+            if(medicamento.getRepeticao(0)) segunda.setChecked(true);
+            if(medicamento.getRepeticao(1)) terca.setChecked(true);
+            if(medicamento.getRepeticao(2)) quarta.setChecked(true);
+            if(medicamento.getRepeticao(3)) quinta.setChecked(true);
+            if(medicamento.getRepeticao(4)) sexta.setChecked(true);
+            if(medicamento.getRepeticao(5)) sabado.setChecked(true);
+            if(medicamento.getRepeticao(6)) domingo.setChecked(true);
+        }
+
 
         //DEFENIÇãO DOS LISTENERS DAS DATAS
         dataInicio.setOnClickListener(new View.OnClickListener() {
@@ -133,6 +152,7 @@ public class Data extends Activity {
                     && Integer.parseInt(editTextMin.getText().toString())>=0)
             {
                 if (addAoMedicamento()) {
+                    medicamento.setEditar(false);
                     inserirNoFicheiro();
                     Intent intent = new Intent(context, MainActivity.class);
                     startActivity(intent);

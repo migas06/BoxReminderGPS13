@@ -36,6 +36,10 @@ public class InserirQuantidade extends Activity
 
         context = this;
         next = (Button) findViewById(R.id.next);
+        if(medicamento.isEditar()){
+            editTextQuantidade.setText(medicamento.getQuantidade());
+            //spinnerUnidade.setSelection(medicamento.getQuantidade());
+        }
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

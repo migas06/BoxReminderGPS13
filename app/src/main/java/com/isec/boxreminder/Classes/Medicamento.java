@@ -12,6 +12,7 @@ import java.util.Date;
  */
 
 public class Medicamento implements Serializable{
+    boolean editar;
     String nome;
     Date dataInicio;
     Date dataFim;
@@ -19,6 +20,14 @@ public class Medicamento implements Serializable{
     String quantidade;
     String tipoQuantidade;
     String caminhoGravacao;
+
+    public boolean isEditar() {
+        return editar;
+    }
+
+    public void setEditar(boolean editar) {
+        this.editar = editar;
+    }
 
     boolean [] repeticao = new boolean[7];
 

@@ -30,6 +30,12 @@ public class VerRegistos extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ver_registos);
+    }
+
+    @Override
+    protected void onResume()
+    {
+        super.onResume();
 
         lista  = ficheiro.lerFicheiro();
 

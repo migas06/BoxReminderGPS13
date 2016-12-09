@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.TaskStackBuilder;
+import android.util.Log;
 
 import com.isec.boxreminder.DetalhesMedicamento;
 import com.isec.boxreminder.MainActivity;
@@ -74,11 +75,21 @@ public class Alarme {
     }
 
     public void criaAlarme(){
-       Long alertTime = new GregorianCalendar().getTimeInMillis()+5*1000;
-       Intent intent = new Intent(context, ReceberAlerta.class);
+        Log.d("LALALALAL", "LALALAL");
+        Long alertTime = new GregorianCalendar().getTimeInMillis()+5*1000;
+        Intent intent = new Intent(context, ReceberAlerta.class);
 
-       AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
-       alarmManager.set(AlarmManager.RTC_WAKEUP, alertTime,  PendingIntent.getBroadcast(context, 1, intent, PendingIntent.FLAG_UPDATE_CURRENT));
+        AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(System.currentTimeMillis());
+        calendar.set(Calendar.HOUR_OF_DAY, 16);
+        calendar.set(Calendar.MINUTE, 31);
+
+        PendingIntent alarmIntent = PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), 1000*5, alarmIntent);
+        //alarmManager.set(AlarmManager.RTC_WAKEUP, alertTime,  PendingIntent.getBroadcast(context, 1, intent, PendingIntent.FLAG_UPDATE_CURRENT));
     }
 
 

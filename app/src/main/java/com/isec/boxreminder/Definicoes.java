@@ -46,7 +46,7 @@ public class Definicoes extends Activity
                 }
 
                 if((contacto>=200000000 && contacto<=969999999)){
-
+                    ficheiro.escreverFicheiroContacto(contacto);
                     Toast.makeText(context,"Operação bem sucedida", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(context, MainActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

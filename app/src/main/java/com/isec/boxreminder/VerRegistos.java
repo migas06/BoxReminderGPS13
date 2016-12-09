@@ -31,23 +31,21 @@ public class VerRegistos extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ver_registos);
 
-        ficheiro.lerFicheiro();
-        lista = ficheiro.getLista();
+        lista  = ficheiro.lerFicheiro();
 
-        povoarListView();
+        if(lista != null)
+            povoarListView();
     }
 
     private void povoarListView() {
         ArrayAdapter<Medicamento> adapta = new MinhaListaAdaptavel(context, lista);
+
         listView = (ListView) findViewById(R.id.listRegisto);
         listView.setAdapter(adapta);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Alarme alarme = new Alarme(context, lista.get(i));
-                alarme.criaAlarme();
-
                 Intent intent = new Intent(context, DetalhesMedicamento.class);
                 intent.putExtra("medicamento", lista.get(i));
                 startActivity(intent);

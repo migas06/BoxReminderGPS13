@@ -38,28 +38,31 @@ public class Ficheiro {
 
     long contacto;
 
-    public String lerFicheiro()  {
+    File file;
+
+    public ArrayList<Medicamento> lerFicheiro()  {
 
         try{
             InputStream file = new FileInputStream(caminho);
             InputStream inputStream = new BufferedInputStream(file);
             ObjectInput objectInput = new ObjectInputStream(inputStream);
 
-            lista = (ArrayList<Medicamento>)objectInput.readObject();
+            lista = (ArrayList<Medicamento>) objectInput.readObject();
 
         } catch (FileNotFoundException e){
             Log.d("FICHEIRO", "ERRO, FICHEIRO NÃO EXISTE");
-            return "nofile";
+            return null;
         } catch (IOException e){
             Log.d("FICHEIRO", "ERRO NO FICHEIRO DE TEXTO");
         } catch (ClassNotFoundException e) {
             Log.d("FICHEIRO", "CLASSE NAO CONHECIDA");
         }
-        return "sucesso";
+        return lista;
     }
 
     public String lerContacto()  {
-        String sContacto;
+        String sContacto = "";
+
         try{
             InputStream file = new FileInputStream(caminhoContacto);
             InputStream inputStream = new BufferedInputStream(file);
@@ -76,7 +79,8 @@ public class Ficheiro {
         } catch (ClassNotFoundException e) {
             Log.d("FICHEIRO", "CLASSE NAO CONHECIDA");
         }
-        return "sucesso";
+
+        return sContacto;
     }
 
     public void escreverFicheiroContacto(long contacto){

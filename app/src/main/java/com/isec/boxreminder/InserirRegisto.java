@@ -58,6 +58,7 @@ public class InserirRegisto extends Activity
 
         if(medicamento.isEditar()){
             editTextNomeMedicamento.setText(medicamento.getNome());
+            editTextNomeMedicamento.setEnabled(false);
         }
         //LISTENER DO BOTAO DE GRAVAR
         buttonGravar.setOnClickListener(new View.OnClickListener() {

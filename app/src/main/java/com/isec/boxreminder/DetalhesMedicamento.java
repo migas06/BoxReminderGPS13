@@ -51,7 +51,6 @@ public class DetalhesMedicamento extends Activity {
         textViewFrequencia = (TextView) findViewById(R.id.DetFreqTempo);
 
         textViewNome.setText(medicamento.getNome());
-        textViewNome.setEnabled(false);
         textViewQuantidadeETipo.setText(medicamento.getQuantidade() + " " + medicamento.getTipoQuantidade());
         textViewDataInicio.setText(dateFormat.format(medicamento.getDataInicio()));
         textViewDataFinal.setText(dateFormat.format(medicamento.getDataFim()));

@@ -12,11 +12,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.isec.boxreminder.Classes.Alarme;
+import com.isec.boxreminder.Classes.Ficheiro;
 import com.isec.boxreminder.Classes.Medicamento;
 import com.isec.boxreminder.Classes.Notificacao;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 
 public class DetalhesMedicamento extends Activity {
     private Button button1;
@@ -49,6 +51,7 @@ public class DetalhesMedicamento extends Activity {
         textViewFrequencia = (TextView) findViewById(R.id.DetFreqTempo);
 
         textViewNome.setText(medicamento.getNome());
+        textViewNome.setEnabled(false);
         textViewQuantidadeETipo.setText(medicamento.getQuantidade() + " " + medicamento.getTipoQuantidade());
         textViewDataInicio.setText(dateFormat.format(medicamento.getDataInicio()));
         textViewDataFinal.setText(dateFormat.format(medicamento.getDataFim()));
@@ -82,8 +85,9 @@ public class DetalhesMedicamento extends Activity {
                         }
                         if(item.getTitle().equals("Eliminar")){
 
-                            Intent intent = new Intent(context, MainActivity.class);
-                            startActivity(intent);
+                            //Intent intent = new Intent(context, MainActivity.class);
+                            //startActivity(intent);
+                            deleteItem();
                             finish();
                         }
                         return true;
@@ -93,6 +97,20 @@ public class DetalhesMedicamento extends Activity {
                 popup.show(); //showing popup menu
             }
         });
+    }
+
+    //medicamento está a ser removido da lista
+    //TODO: implementar o mesmo a nível do ficheiro
+    //TODO: -> ou editar o ficheiro diretamente
+    //TODO: -> ou reescrever o ficheiro todo cada vez que se gravar
+    private void deleteItem()
+    {
+        Ficheiro ficheiro = new Ficheiro();
+        ArrayList<Medicamento> lista = ficheiro.getLista();
+
+        for(Medicamento med : lista)
+            if(med.getNome().equals(medicamento.getNome()))
+                lista.remove(med);
     }
 
     private String criarFrequencia() {

@@ -13,7 +13,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:gravity="end">
+        android:gravity="end"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp">
         <Button
             android:id="@+id/button1"
             android:layout_width="wrap_content"
@@ -29,7 +31,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:gravity="end">
+        android:gravity="end"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp">
         <TextView
             android:text="Medicamento 1"
             android:layout_width="wrap_content"
@@ -48,7 +52,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:weightSum="2"
-        >
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp">
         <TextView
             android:text="Quantidade:"
             android:layout_width="0dp"
@@ -76,7 +81,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
         android:weightSum="5"
-        >
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp">
             <TextView
                 android:text="Hora:"
                 android:layout_width="0dp"
@@ -86,6 +92,7 @@
                 android:textColor="#999999"
                 android:textStyle="normal|bold"
                 android:textSize="26sp" />
+
         <TextView
             android:text="Data e Hora"
             android:layout_width="0dp"
@@ -103,7 +110,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
-        android:weightSum="5">
+        android:weightSum="5"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp">
         <TextView
             android:text="Frequencia:"
             android:layout_width="0dp"
@@ -128,7 +137,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
-        android:weightSum="5">
+        android:weightSum="5"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp">
         <TextView
             android:text="Data Inicio:"
             android:layout_width="0dp"
@@ -153,7 +164,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
-        android:weightSum="5">
+        android:weightSum="5"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp">
         <TextView
             android:text="Data Final:"
             android:layout_width="0dp"

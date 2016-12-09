@@ -21,9 +21,7 @@ public class Medicamento implements Serializable{
     String tipoQuantidade;
     String caminhoGravacao;
 
-    public boolean isEditar() {
-        return editar;
-    }
+    public boolean isEditar() {return editar;}
 
     public void setEditar(boolean editar) {
         this.editar = editar;

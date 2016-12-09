@@ -43,7 +43,7 @@ public class Inicial extends Activity {
                 }
 
                 if((contacto>=200000000 && contacto<=969999999)){
-                    Ficheiro ficheiro =new Ficheiro();
+                    Ficheiro ficheiro = new Ficheiro();
                     ficheiro.escreverFicheiroContacto(contacto);
                     Toast.makeText(context,"Operação bem sucedida", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(context, MainActivity.class);

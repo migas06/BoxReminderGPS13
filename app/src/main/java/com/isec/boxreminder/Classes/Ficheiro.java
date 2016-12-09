@@ -8,6 +8,7 @@ import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -33,9 +34,9 @@ public class Ficheiro {
     ArrayList<Medicamento> lista = new ArrayList<Medicamento>();
 
     String caminho = Environment.getExternalStorageDirectory().getAbsolutePath()+"/MyMeds.obj";
-    String caminhoContacto = Environment.getExternalStorageDirectory().getAbsolutePath()+"/MyContact.txt";
+    String caminhoContacto = Environment.getExternalStorageDirectory().getAbsolutePath()+"/MyContact.obj";
 
-    String linha;
+    long contacto;
 
     public String lerFicheiro()  {
 
@@ -58,57 +59,47 @@ public class Ficheiro {
     }
 
     public String lerContacto()  {
-
+        String sContacto;
         try{
-            BufferedReader bufferedReader = new BufferedReader(new FileReader(caminhoContacto));
-            linha = bufferedReader.readLine();
-            bufferedReader.close();
+            InputStream file = new FileInputStream(caminhoContacto);
+            InputStream inputStream = new BufferedInputStream(file);
+            ObjectInput objectInput = new ObjectInputStream(inputStream);
+
+            sContacto = (String) objectInput.readObject();
+            contacto = Long.parseLong(sContacto);
 
         } catch (FileNotFoundException e){
-            Log.d("FICHEIRO", "ERRO NO FICHEIRO DE TEXTO");
+            Log.d("FICHEIRO", "ERRO, FICHEIRO NÃO EXISTE");
             return "nofile";
         } catch (IOException e){
             Log.d("FICHEIRO", "ERRO NO FICHEIRO DE TEXTO");
+        } catch (ClassNotFoundException e) {
+            Log.d("FICHEIRO", "CLASSE NAO CONHECIDA");
         }
-        return linha;
+        return "sucesso";
     }
 
     public void escreverFicheiroContacto(long contacto){
         try{
-            BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(caminhoContacto));
-            linha = contacto + "\n";
+            OutputStream fOutputStream = new FileOutputStream(caminhoContacto);
+            OutputStream outputStream = new BufferedOutputStream(fOutputStream);
+            ObjectOutput objectOutput = new ObjectOutputStream(outputStream);
 
-            bufferedWriter.append(linha + "\n");
-            bufferedWriter.close();
+
+            objectOutput.writeObject(contacto+"");
+            objectOutput.close();
+
         }catch (IOException e){
-            Log.d("FICHEIRO", "ERRO NO FICHEIRO DE TEXTO");
+            Log.d("FICHEIRO", "ERRO NO FICHEIRO");
         }
     }
 
-    /*public void escreverFicheiro(Medicamento medicamento){
+    public void delete (){
+        File file = new File(caminhoContacto);
 
-        try{
-            BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(caminho, true));
-            linha = medicamento.getNome().toString() + "\n";
-            linha += medicamento.getQuantidade().toString() + " ";
-            linha += medicamento.getTipoQuantidade().toString() + "\n";
-            if(medicamento.getCaminhoGravacao().contains(".3gp")){
-                linha += medicamento.getCaminhoGravacao().toString() + "\n";
-            }else
-                linha += "sem toque de notificação";
-            for(int i=0; i<7; i++)
-                linha += medicamento.getRepeticao(i) + " ";
-
-            linha += "\n"+ hourFormat.format(medicamento.getHora()) + "\n";
-            linha += dateFormat.format(medicamento.getDataInicio()) + " " + dateFormat.format(medicamento.getDataFim()) +"\n\n";
-
-
-            bufferedWriter.append(linha);
-            bufferedWriter.close();
-        }catch (IOException e){
-            Log.d("FICHEIRO", "ERRO NO FICHEIRO DE TEXTO");
-        }
-    }*/
+        if(file.exists())
+            file.delete();
+    }
 
     public void escreverFicheiro(){
 

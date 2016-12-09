@@ -107,6 +107,18 @@ public class MedicamentoUnitTest
         assertEquals("/gravações/grav1.wav", medicamento.getCaminhoGravacao());
     }
 
+    @Before
+    public void repeticaoTestBefore()
+    {
+        medicamento.setRepeticao(new boolean[] {true, true, false, true});
+    }
+
+    @Test
+    public void repeticaoTest() throws AssertionError
+    {
+        assertFalse(medicamento.getRepeticao(2));
+    }
+
     @AfterClass
     public static void finish()
     {

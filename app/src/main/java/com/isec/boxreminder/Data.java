@@ -12,9 +12,11 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Switch;
 import android.widget.Toast;
 
 import com.isec.boxreminder.Classes.Ficheiro;
@@ -34,35 +36,37 @@ import static android.R.attr.onClick;
 
 public class Data extends Activity {
 
-    final SimpleDateFormat formatoData = new SimpleDateFormat("dd-MM-yyyy");
+    private final SimpleDateFormat formatoData = new SimpleDateFormat("dd-MM-yyyy");
 
-    Calendar c     = Calendar.getInstance();
-    int startYear  = c.get(Calendar.YEAR);
-    int startMonth = c.get(Calendar.MONTH)+1;     //POR ALGUM MOTIVO O NUMERO ASSOCIADO AO Mês É MENOS 1 (PE Jan = 0, Fev = 1, etc)
-    int startDay   = c.get(Calendar.DAY_OF_MONTH);
+    private Calendar c     = Calendar.getInstance();
+    private int startYear  = c.get(Calendar.YEAR);
+    private int startMonth = c.get(Calendar.MONTH)+1;     //POR ALGUM MOTIVO O NUMERO ASSOCIADO AO Mês É MENOS 1 (PE Jan = 0, Fev = 1, etc)
+    private int startDay   = c.get(Calendar.DAY_OF_MONTH);
 
-    Date dateDataInicio;
-    Date dateDataFim;
-    Date dateHora;
+    private Date dateDataInicio;
+    private Date dateDataFim;
+    private Date dateHora;
 
     //TRUE  PARA DATA_INICIAL
     //FALSE PARA DATA_FINAL
-    boolean change;
+    private boolean change;
 
-    ImageView dataInicio;
-    ImageView dataFim;
+    private ImageView dataInicio;
+    private ImageView dataFim;
 
-    EditText editTextDataInicio;
-    EditText editTextDataFim;
-    EditText editTextHora;
-    EditText editTextMin;
+    private EditText editTextDataInicio;
+    private EditText editTextDataFim;
+    private EditText editTextHora;
+    private EditText editTextMin;
 
-    CheckBox segunda, terca, quarta, quinta, sexta, sabado, domingo;
+    private CheckBox segunda, terca, quarta, quinta, sexta, sabado, domingo;
 
-    Button next;
-    Context context = this;
+    private Button next;
+    private Context context = this;
 
-    Medicamento medicamento;
+    private Switch switchDataLimite;
+
+    private Medicamento medicamento;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,6 +101,17 @@ public class Data extends Activity {
 
         dataInicio = (ImageView) findViewById(R.id.imagemDataInicio);
         dataFim    = (ImageView) findViewById(R.id.imagemDataFim);
+
+        switchDataLimite = (Switch) findViewById(R.id.switchDataLimite);
+
+        switchDataLimite.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
+        {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked)
+            {
+                dataFim.setEnabled(isChecked);
+            }
+        });
 
         if(medicamento.isEditar()){
             //editTextDataInicio.setText();
@@ -257,7 +272,7 @@ public class Data extends Activity {
         public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
 
             //POR ALGUM MOTIVO O NUMERO DO MES APARECE ATRASADO.
-            setData(year, monthOfYear, dayOfMonth);
+            setData(year, monthOfYear + 1, dayOfMonth);
         }
     }
 }

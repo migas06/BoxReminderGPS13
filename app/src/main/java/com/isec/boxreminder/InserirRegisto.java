@@ -48,7 +48,7 @@ public class InserirRegisto extends Activity
             medicamento  = new Medicamento();
         }
 
-        novaGravacao = new Gravacao();
+        novaGravacao = null;
 
         editTextNomeMedicamento = (EditText) findViewById(R.id.nomeMedicamento);
 
@@ -64,8 +64,10 @@ public class InserirRegisto extends Activity
             @Override
             public void onClick(View view) {
                 nomeMedicamentoInserido = editTextNomeMedicamento.getText().toString();
+
                 if(!nomeMedicamentoInserido.equals("")) {
                     if (estadoAGravar == false) {
+                        novaGravacao = new Gravacao();
                         nomeFicheiro += nomeMedicamentoInserido+".3gp";
                         novaGravacao.setCaminhoFicheiro(nomeFicheiro);
                         novaGravacao.comecaGravar();
@@ -84,7 +86,8 @@ public class InserirRegisto extends Activity
         buttonReproduzir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(!nomeMedicamentoInserido.equals(""))
+                nomeMedicamentoInserido = editTextNomeMedicamento.getText().toString();
+                if(novaGravacao != null)
                     novaGravacao.reproduzGravacao();
                 else
                     Toast.makeText(context, "Tem de ter uma gravação!", Toast.LENGTH_LONG).show();

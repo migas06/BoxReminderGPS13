@@ -2,9 +2,14 @@ package com.isec.boxreminder;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.PopupMenu;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.isec.boxreminder.Classes.Medicamento;
 import com.isec.boxreminder.Classes.Notificacao;
@@ -13,7 +18,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
 public class DetalhesMedicamento extends Activity {
-
+    private Button button1;
     Medicamento medicamento;
     Context context = this;
 
@@ -55,6 +60,37 @@ public class DetalhesMedicamento extends Activity {
         textViewDataFinal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+            }
+        });
+        button1 =(Button) findViewById(R.id.button1);
+        button1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                PopupMenu popup = new PopupMenu(DetalhesMedicamento.this, button1);
+                //Inflating the Popup using xml file
+                popup.getMenuInflater()
+                        .inflate(R.menu.popup_menu, popup.getMenu());
+
+                //registering popup with OnMenuItemClickListener
+                popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    public boolean onMenuItemClick(MenuItem item) {
+                        if(item.getTitle().equals("Editar")){
+                            medicamento.setEditar(true);
+                            Intent intent = new Intent(context, InserirRegisto.class);
+                            intent.putExtra("medicamento", medicamento);
+                            startActivity(intent);
+                        }
+                        if(item.getTitle().equals("Eliminar")){
+
+                            Intent intent = new Intent(context, MainActivity.class);
+                            startActivity(intent);
+                            finish();
+                        }
+                        return true;
+                    }
+                });
+
+                popup.show(); //showing popup menu
             }
         });
     }

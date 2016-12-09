@@ -19,7 +19,7 @@
     <string name="quantidade">Quantidade</string>
 
     <string-array name="QuantidadeMedidas">
-        <item>Unidade</item>
+        <item>Unidades</item>
         <item>mg/L</item>
     </string-array>
 

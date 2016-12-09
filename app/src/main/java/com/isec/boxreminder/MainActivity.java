@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.isec.boxreminder.Classes.Ficheiro;
+import com.isec.boxreminder.Classes.Notificacao;
 
 public class MainActivity extends Activity {
     Ficheiro ficheiro=new Ficheiro();

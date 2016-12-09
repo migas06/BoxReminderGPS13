@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import com.isec.boxreminder.Classes.Medicamento;
 import com.isec.boxreminder.R;
 
 import java.text.DateFormat;
@@ -27,7 +26,7 @@ public class MinhaListaAdaptavel extends ArrayAdapter<Medicamento> {
     DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 
     public MinhaListaAdaptavel(Context context, ArrayList<Medicamento> lista) {
-        super(context, R.layout.lisview_adapter, lista);
+        super(context, R.layout.listview_adapter, lista);
         this.context = context;
         this.lista = lista;
     }
@@ -40,7 +39,7 @@ public class MinhaListaAdaptavel extends ArrayAdapter<Medicamento> {
         Medicamento medicamento;
 
         if(itemView == null)
-            itemView = inflater.inflate(R.layout.lisview_adapter, parent, false);
+            itemView = inflater.inflate(R.layout.listview_adapter, parent, false);
 
         medicamento = lista.get(position);
 

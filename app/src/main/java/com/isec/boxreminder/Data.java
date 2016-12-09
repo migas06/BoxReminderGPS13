@@ -128,7 +128,7 @@ public class Data extends Activity {
             {
                 Toast.makeText(context, "Os campos data e hora têm de ser preenchidos", Toast.LENGTH_LONG).show();
             //verifica se os numeros introduzidos nas horas e minutos são validos
-            }else if(Integer.parseInt(editTextHora.getText().toString())<24 && Integer.parseInt(editTextHora.getText().toString())>0
+            }else if(Integer.parseInt(editTextHora.getText().toString())<24 && Integer.parseInt(editTextHora.getText().toString())>=0
                     && Integer.parseInt(editTextMin.getText().toString())<60
                     && Integer.parseInt(editTextMin.getText().toString())>=0)
             {

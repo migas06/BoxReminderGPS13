@@ -27,6 +27,7 @@
             android:textStyle="normal|bold"
             android:textSize="36sp" />
     </LinearLayout>
+
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"

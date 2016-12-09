@@ -30,8 +30,15 @@
 
         <ListView
             android:id="@+id/listRegisto"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:divider="#b5b5b5"
+            android:dividerHeight="5dp"
+            android:background="#ffffffff"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            >
         </ListView>
     </LinearLayout>
 

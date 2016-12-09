@@ -1,5 +1,6 @@
 package com.isec.boxreminder.Classes;
 
+import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;

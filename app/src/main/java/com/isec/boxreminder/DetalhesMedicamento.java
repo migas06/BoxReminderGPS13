@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import com.isec.boxreminder.Classes.Alarme;
 import com.isec.boxreminder.Classes.Medicamento;
 import com.isec.boxreminder.Classes.Notificacao;
 
@@ -50,13 +51,6 @@ public class DetalhesMedicamento extends Activity {
 
         String frequencia = criarFrequencia();
         textViewFrequencia.setText(frequencia);
-
-
-        textViewDataFinal.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-            }
-        });
     }
 
     private String criarFrequencia() {

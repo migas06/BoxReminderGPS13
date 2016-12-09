@@ -2,10 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.isec.boxreminder">
 
-    <uses-permission android:name="android.permission.CALL_PHONE"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
     <uses-permission android:name="android.permission.SEND_SMS" />
     <uses-permission android:name="com.android.alarm.permission.SET_ALARM"/>
 
@@ -22,12 +22,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity android:name=".InserirRegisto" />
         <activity android:name=".InserirQuantidade" />
         <activity android:name=".Definicoes" />
         <activity android:name=".Data" />
         <activity android:name=".VerRegistos" />
         <activity android:name=".DetalhesMedicamento" />
+        <activity android:name=".Inicial"></activity>
+
 
         <receiver android:name=".Widget.SOSPhone">
             <intent-filter>
@@ -38,11 +41,7 @@
                 android:resource="@xml/sosphone_info" />
         </receiver>
 
-        <meta-data
-            android:name="com.google.android.gms.version"
-            android:value="@integer/google_play_services_version" />
-
-        <activity android:name=".Inicial"></activity>
+        <receiver  android:process=":remote" android:name=".Classes.ReceberAlerta"></receiver>
     </application>
 
 </manifest>

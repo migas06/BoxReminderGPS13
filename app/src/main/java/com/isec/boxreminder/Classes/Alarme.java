@@ -75,21 +75,16 @@ public class Alarme {
     }
 
     public void criaAlarme(){
-        Log.d("LALALALAL", "LALALAL");
+
         Long alertTime = new GregorianCalendar().getTimeInMillis()+5*1000;
         Intent intent = new Intent(context, ReceberAlerta.class);
 
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
 
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTimeInMillis(System.currentTimeMillis());
-        calendar.set(Calendar.HOUR_OF_DAY, 16);
-        calendar.set(Calendar.MINUTE, 31);
-
         PendingIntent alarmIntent = PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
 
-        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), 1000*5, alarmIntent);
-        //alarmManager.set(AlarmManager.RTC_WAKEUP, alertTime,  PendingIntent.getBroadcast(context, 1, intent, PendingIntent.FLAG_UPDATE_CURRENT));
+        //alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), 1000*5, alarmIntent);
+        alarmManager.set(AlarmManager.RTC_WAKEUP, alertTime, alarmIntent);
     }
 
 
@@ -111,6 +106,8 @@ public class Alarme {
         NotificationManager mNotificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
 
         mNotificationManager.notify(0, mBuilder.build());
+
+
 
     }
 }

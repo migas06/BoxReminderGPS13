@@ -77,13 +77,19 @@ public class Alarme {
     public void criaAlarme(){
 
         Long alertTime = new GregorianCalendar().getTimeInMillis()+5*1000;
-        Intent intent = new Intent(context, ReceberAlerta.class);
+
+        //acho que não funciona por ReceberAlerta não ser Activity
+        //Intent intent = new Intent(context, ReceberAlerta.class);
+        Intent intent = new Intent(context, DetalhesMedicamento.class);
+        intent.putExtra("medicamento", medicamento);
+        intent.putExtra("alarme", true); //para DetalhesMedicamento
+        // saber que é apenas um alarme e não deixar editar/eliminar (VER DetalhesMedicamento -> boolean alarme)
 
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
 
-        PendingIntent alarmIntent = PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        //PendingIntent alarmIntent = PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        PendingIntent alarmIntent = PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
 
-        //alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), 1000*5, alarmIntent);
         alarmManager.set(AlarmManager.RTC_WAKEUP, alertTime, alarmIntent);
     }
 

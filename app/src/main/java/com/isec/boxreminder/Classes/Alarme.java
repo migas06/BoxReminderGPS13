@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.TaskStackBuilder;
 
+import com.isec.boxreminder.ApresentarNotificacao;
 import com.isec.boxreminder.DetalhesMedicamento;
 import com.isec.boxreminder.MainActivity;
 import com.isec.boxreminder.R;
@@ -74,56 +75,15 @@ public class Alarme {
 
     public void criaAlarme(){
 
-        Long alertTime = new GregorianCalendar().getTimeInMillis()+5*1000;
-
-        //acho que não funciona por ReceberAlerta não ser Activity
-        Intent intent = new Intent(context, ReceberAlerta.class);
-        //Intent intent = new Intent(context, DetalhesMedicamento.class);
-        intent.putExtra("medicamento", medicamento);
-        //intent.putExtra("alarme", true); //para DetalhesMedicamento
-        // saber que é apenas um alarme e não deixar editar/eliminar (VER DetalhesMedicamento -> boolean alarme)
+        Long alertTime = new GregorianCalendar().getTimeInMillis()+2*1000;
 
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
 
+        Intent intent = new Intent(context, ReceberAlerta.class);
+        intent.putExtra("medicamento", medicamento);
+
         PendingIntent alarmIntent = PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
-        //pendingIntent alarmIntent = PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
 
         alarmManager.set(AlarmManager.RTC_WAKEUP, alertTime, alarmIntent);
     }
 }
-/*
-        Long alertTime = new GregorianCalendar().getTimeInMillis() + 3*1000;
-
-        AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
-
-        Intent intent = new Intent(context, ServicoNotificacao.class);
-        intent.putExtra("medicamento", medicamento);
-        PendingIntent alarmIntent = PendingIntent.getService(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
-
-        alarmManager.set(AlarmManager.RTC_WAKEUP, alertTime, alarmIntent);
-    }
-
-
-    public void test(){
-        NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(context)
-                        .setSmallIcon(R.drawable.circular_button)
-                        .setContentTitle("BoxReminder")
-                        .setContentText("Tome o seu medicamento " +medicamento.getNome());
-
-        //desaparece em onClick
-        mBuilder.setAutoCancel(true);
-
-        Intent intent = new Intent(context, DetalhesMedicamento.class);
-        intent.putExtra("medicamento", medicamento);
-
-        TaskStackBuilder stackBuilder = TaskStackBuilder.create(context);
-        stackBuilder.addParentStack(MainActivity.class);
-
-        stackBuilder.addNextIntent(intent);
-        PendingIntent resultPendingIntent = stackBuilder.getPendingIntent(0,PendingIntent.FLAG_UPDATE_CURRENT);
-        mBuilder.setContentIntent(resultPendingIntent);
-        NotificationManager mNotificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
-
-        mNotificationManager.notify(0, mBuilder.build());
-    }
-}*/

@@ -2,18 +2,13 @@ package com.isec.boxreminder.Classes;
 
 import android.os.Environment;
 import android.util.Log;
-import android.widget.Toast;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.ObjectInput;
@@ -21,8 +16,6 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutput;
 import java.io.ObjectOutputStream;
 import java.io.OutputStream;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 /**
@@ -35,10 +28,9 @@ public class Ficheiro {
 
     String caminho = Environment.getExternalStorageDirectory().getAbsolutePath()+"/MyMeds.obj";
     String caminhoContacto = Environment.getExternalStorageDirectory().getAbsolutePath()+"/MyContact.obj";
+    String caminhoSettings = Environment.getExternalStorageDirectory().getAbsolutePath()+ "/Settings.obj";
 
     long contacto;
-
-    File file;
 
     public ArrayList<Medicamento> lerFicheiro()  {
 
@@ -91,6 +83,42 @@ public class Ficheiro {
 
 
             objectOutput.writeObject(contacto+"");
+            objectOutput.close();
+
+        }catch (IOException e){
+            Log.d("FICHEIRO", "ERRO NO FICHEIRO");
+        }
+    }
+
+    public boolean vozEstaAtiva()
+    {
+        boolean estado = false;
+
+        try{
+            InputStream file = new FileInputStream(caminhoSettings);
+            InputStream inputStream = new BufferedInputStream(file);
+            ObjectInput objectInput = new ObjectInputStream(inputStream);
+
+            estado = objectInput.readBoolean();
+
+        } catch (FileNotFoundException e){
+            Log.d("FICHEIRO", "ERRO, FICHEIRO NÃO EXISTE");
+        } catch (IOException e){
+            Log.d("FICHEIRO", "ERRO NO FICHEIRO DE TEXTO");
+        }
+
+        return estado;
+    }
+
+    public void ativarVoz(boolean estado)
+    {
+        try{
+            OutputStream fOutputStream = new FileOutputStream(caminhoSettings);
+            OutputStream outputStream = new BufferedOutputStream(fOutputStream);
+            ObjectOutput objectOutput = new ObjectOutputStream(outputStream);
+
+            objectOutput.writeBoolean(estado);
+
             objectOutput.close();
 
         }catch (IOException e){

@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -27,6 +29,7 @@ public class Definicoes extends Activity
         setContentView(R.layout.activity_definicoes);
 
         final EditText mEditText = (EditText) findViewById(R.id.editTextContacto);
+        CheckBox checkBox = (CheckBox) findViewById(R.id.checkBoxVoz);
 
         EditText editTextContacto = (EditText) findViewById(R.id.editTextContacto) ;
 
@@ -64,6 +67,17 @@ public class Definicoes extends Activity
                     dlgAlert.setCancelable(true);
                     dlgAlert.create().show();
                 }
+            }
+        });
+
+        checkBox.setChecked(new Ficheiro().vozEstaAtiva());
+        checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
+        {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked)
+            {
+                Ficheiro ficheiro = new Ficheiro();
+                ficheiro.ativarVoz(isChecked);
             }
         });
     }

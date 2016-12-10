@@ -5,9 +5,9 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
-    <uses-permission android:name="android.permission.CALL_PHONE"/>
+    <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.SEND_SMS" />
-    <uses-permission android:name="com.android.alarm.permission.SET_ALARM"/>
+    <uses-permission android:name="com.android.alarm.permission.SET_ALARM" />
 
     <application
         android:allowBackup="true"
@@ -22,27 +22,28 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity android:name=".InserirRegisto" />
         <activity android:name=".InserirQuantidade" />
         <activity android:name=".Definicoes" />
         <activity android:name=".Data" />
         <activity android:name=".VerRegistos" />
         <activity android:name=".DetalhesMedicamento" />
-        <activity android:name=".Inicial"></activity>
+        <activity android:name=".Inicial" />
 
         <receiver android:name=".Widget.SOSPhone">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
+
             <meta-data
                 android:name="android.appwidget.provider"
                 android:resource="@xml/sosphone_info" />
         </receiver>
-
         <receiver
-            android:process=":remote"
-            android:name=".Classes.ReceberAlerta" />
+            android:name=".Classes.ReceberAlerta"
+            android:process=":remote" />
+
+        <activity android:name=".ApresentarNotificacao" android:theme="@style/Theme.Transparent" />
     </application>
 
 </manifest>

@@ -42,7 +42,6 @@ public class DetalhesMedicamento extends Activity {
         setContentView(R.layout.activity_detalhes_medicamento);
 
         medicamento = (Medicamento) getIntent().getSerializableExtra("medicamento");
-        boolean alarme = getIntent().getBooleanExtra("alarme", false);
 
         textViewNome = (TextView) findViewById(R.id.NomeMedDetalhes);
         textViewQuantidadeETipo = (TextView) findViewById(R.id.DetQuantETipo);
@@ -77,14 +76,6 @@ public class DetalhesMedicamento extends Activity {
             }
         });
         button1 =(Button) findViewById(R.id.button1);
-
-        //case seja de um alarme
-        if(alarme)
-        {
-            button1.setAlpha(0);
-            button1.setEnabled(false);
-        }
-
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

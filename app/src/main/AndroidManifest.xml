@@ -31,6 +31,7 @@
         <activity android:name=".DetalhesMedicamento" />
         <activity android:name=".Inicial"></activity>
 
+        <service android:enabled="true" android:name=".Classes.ServicoNotificacao" />
 
         <receiver android:name=".Widget.SOSPhone">
             <intent-filter>
@@ -41,7 +42,9 @@
                 android:resource="@xml/sosphone_info" />
         </receiver>
 
-        <receiver  android:process=":remote" android:name=".Classes.ReceberAlerta"></receiver>
+        <receiver
+            android:process=":remote"
+            android:name=".Classes.ReceberAlerta" />
     </application>
 
 </manifest>

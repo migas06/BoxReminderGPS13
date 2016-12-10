@@ -31,8 +31,6 @@
         <activity android:name=".DetalhesMedicamento" />
         <activity android:name=".Inicial"></activity>
 
-        <service android:enabled="true" android:name=".Classes.ServicoNotificacao" />
-
         <receiver android:name=".Widget.SOSPhone">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />

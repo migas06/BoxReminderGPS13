@@ -20,27 +20,26 @@ import java.util.Calendar;
 
 public class ReceberAlerta extends BroadcastReceiver {
 
-    /*public ReceberAlerta(Medicamento medicamento, Context context) {
-        this.medicamento = medicamento;
-        this.context = context;
-    }*/
+    Medicamento medicamento;
 
     @Override
     public void onReceive(Context context, Intent intent) {
+        medicamento = (Medicamento) intent.getSerializableExtra("medicamento");
         gerarNotificacao(context);
     }
 
     private void gerarNotificacao(Context context) {
 
         Intent intent = new Intent(context, DetalhesMedicamento.class);
+        intent.putExtra("medicamento", medicamento);
 
         PendingIntent notificacao = PendingIntent.getActivity(context, 0, intent,0 );
 
         NotificationCompat.Builder construirNotificacao = new NotificationCompat.Builder(context);
-        construirNotificacao.setSmallIcon(android.R.drawable.alert_dark_frame);
+        construirNotificacao.setSmallIcon(android.R.drawable.ic_notification_overlay);
         construirNotificacao.setContentTitle("BOXREMINDER");
-        construirNotificacao.setTicker("Tome o seu medicamneto agora");
-        construirNotificacao.setContentText("Tome o seu medicamneto agora 1");
+        construirNotificacao.setTicker("Tome o seu medicamento agora!");
+        construirNotificacao.setContentText("Hora de tomar "+medicamento.getNome());
 
 
         construirNotificacao.setContentIntent(notificacao);
@@ -51,31 +50,4 @@ public class ReceberAlerta extends BroadcastReceiver {
         notificationManager.notify(1, construirNotificacao.build());
 
     }
-
-
-        /*@Override
-        public void onReceive(Context context, Intent intent) {
-            String message = "Hellooo, alrm worked ----";
-            Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
-            Intent intent2 = new Intent(context, Medicamento.class);
-            intent2.putExtra("medicamento", medicamento);
-            intent2.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            context.startActivity(intent2);
-        }
-
-        public void setAlarm(Context context){
-            Log.d("Carbon","Alrm SET !!");
-
-            // get a Calendar object with current time
-            Calendar cal = Calendar.getInstance();
-            // add 30 seconds to the calendar object
-            cal.add(Calendar.SECOND, 30);
-            Intent intent = new Intent(context, ReceberAlerta.class);
-            PendingIntent sender = PendingIntent.getBroadcast(context, 192837, intent, PendingIntent.FLAG_UPDATE_CURRENT);
-
-            // Get the AlarmManager service
-            AlarmManager am = (AlarmManager) context.getSystemService(context.ALARM_SERVICE);
-            am.set(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), sender);
-        }*/
-
 }

@@ -79,41 +79,17 @@ public class Alarme {
         Long alertTime = new GregorianCalendar().getTimeInMillis()+5*1000;
 
         //acho que não funciona por ReceberAlerta não ser Activity
-        //Intent intent = new Intent(context, ReceberAlerta.class);
-        Intent intent = new Intent(context, DetalhesMedicamento.class);
+        Intent intent = new Intent(context, ReceberAlerta.class);
+        //Intent intent = new Intent(context, DetalhesMedicamento.class);
         intent.putExtra("medicamento", medicamento);
-        intent.putExtra("alarme", true); //para DetalhesMedicamento
+        //intent.putExtra("alarme", true); //para DetalhesMedicamento
         // saber que é apenas um alarme e não deixar editar/eliminar (VER DetalhesMedicamento -> boolean alarme)
 
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
 
-        //PendingIntent alarmIntent = PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
-        PendingIntent alarmIntent = PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        PendingIntent alarmIntent = PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        //pendingIntent alarmIntent = PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
 
         alarmManager.set(AlarmManager.RTC_WAKEUP, alertTime, alarmIntent);
-    }
-
-
-    public void test(){
-        NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(context)
-                        .setSmallIcon(R.drawable.circular_button)
-                        .setContentTitle("BoxReminder")
-                        .setContentText("Tome o seu medicamento " +medicamento.getNome());
-
-        Intent intent = new Intent(context, DetalhesMedicamento.class);
-        intent.putExtra("medicamento", medicamento);
-
-        TaskStackBuilder stackBuilder = TaskStackBuilder.create(context);
-        stackBuilder.addParentStack(MainActivity.class);
-
-        stackBuilder.addNextIntent(intent);
-        PendingIntent resultPendingIntent = stackBuilder.getPendingIntent(0,PendingIntent.FLAG_UPDATE_CURRENT);
-        mBuilder.setContentIntent(resultPendingIntent);
-        NotificationManager mNotificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
-
-        mNotificationManager.notify(0, mBuilder.build());
-
-
-
     }
 }

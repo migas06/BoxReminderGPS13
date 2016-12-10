@@ -74,7 +74,6 @@ public class Alarme {
 
     public void criaAlarme(){
 
-<<<<<<< HEAD
         Long alertTime = new GregorianCalendar().getTimeInMillis()+5*1000;
 
         //acho que não funciona por ReceberAlerta não ser Activity
@@ -92,7 +91,7 @@ public class Alarme {
         alarmManager.set(AlarmManager.RTC_WAKEUP, alertTime, alarmIntent);
     }
 }
-=======
+/*
         Long alertTime = new GregorianCalendar().getTimeInMillis() + 3*1000;
 
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
@@ -127,5 +126,4 @@ public class Alarme {
 
         mNotificationManager.notify(0, mBuilder.build());
     }
-}
->>>>>>> origin/master
+}*/

@@ -68,13 +68,6 @@ public class DetalhesMedicamento extends Activity {
             }
         });
 
-        textViewDataInicio.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Notificacao notificacao = new Notificacao(context, medicamento);
-                notificacao.sendSms();
-            }
-        });
         button1 =(Button) findViewById(R.id.button1);
         button1.setOnClickListener(new View.OnClickListener() {
             @Override

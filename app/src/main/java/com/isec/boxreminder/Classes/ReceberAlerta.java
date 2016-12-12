@@ -29,18 +29,17 @@ public class ReceberAlerta extends BroadcastReceiver {
         medicamento = (Medicamento) intent.getSerializableExtra("medicamento");
 
         if(new Ficheiro().vozEstaAtiva())
-            criaAtividade(context);
+            criaAtividade(context, (int) System.currentTimeMillis());
         else
-            gerarNotificacao(context);
+            gerarNotificacao(context, (int) System.currentTimeMillis());
     }
 
-    private static int count = 0;
-    private void gerarNotificacao(Context context) {
+    private void gerarNotificacao(Context context, int id) {
 
         Intent intent = new Intent(context, DetalhesMedicamento.class);
         intent.putExtra("medicamento", medicamento);
 
-        PendingIntent notificacao = PendingIntent.getActivity(context, 0, intent,0 );
+        PendingIntent notificacao = PendingIntent.getActivity(context, id, intent, 0);
 
         NotificationCompat.Builder construirNotificacao = new NotificationCompat.Builder(context);
         construirNotificacao.setSmallIcon(android.R.drawable.ic_notification_overlay);
@@ -54,10 +53,10 @@ public class ReceberAlerta extends BroadcastReceiver {
         construirNotificacao.setAutoCancel(true);
 
         NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
-        notificationManager.notify(count++, construirNotificacao.build());
+        notificationManager.notify(id, construirNotificacao.build());
     }
 
-    private void criaAtividade(Context context)
+    private void criaAtividade(Context context, int id)
     {
         //Atividade com listeners para os botões físicos
         //e que reproduz a gravação
@@ -65,7 +64,7 @@ public class ReceberAlerta extends BroadcastReceiver {
         Intent intent = new Intent(context, ApresentarNotificacao.class);
         intent.putExtra("medicamento", medicamento);
 
-        PendingIntent alarmIntent = PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        PendingIntent alarmIntent = PendingIntent.getActivity(context, id, intent, PendingIntent.FLAG_UPDATE_CURRENT);
 
         //setExact() reduz a vida da bateria mas é mais exato no tempo de entra
         //set() aumenta a vida da bateria mas tem alguns segundos de atraso (dependendo da carga do Sistema)

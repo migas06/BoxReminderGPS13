@@ -82,7 +82,9 @@ public class Alarme {
         Intent intent = new Intent(context, ReceberAlerta.class);
         intent.putExtra("medicamento", medicamento);
 
-        PendingIntent alarmIntent = PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        int id = (int) System.currentTimeMillis();
+
+        PendingIntent alarmIntent = PendingIntent.getBroadcast(context, id, intent, PendingIntent.FLAG_UPDATE_CURRENT);
 
         alarmManager.set(AlarmManager.RTC_WAKEUP, alertTime, alarmIntent);
     }

@@ -23,7 +23,7 @@ public class ApresentarNotificacao extends Activity
 
         TextView notificacao = (TextView) findViewById(R.id.textViewNotificação);
 
-        notificacao.setText("São horas de tomar " + medicamento.getNome());
+        notificacao.setText("Hora de tomar "+medicamento.getNome());
 
         //TODO: layout minimalista                                                              -> FEITO
         //TODO: Alterar "textViewNotificação" para mostrar mensagem específica de medicamento   -> POR FAZER

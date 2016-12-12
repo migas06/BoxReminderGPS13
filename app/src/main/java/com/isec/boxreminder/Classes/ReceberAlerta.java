@@ -34,6 +34,7 @@ public class ReceberAlerta extends BroadcastReceiver {
             gerarNotificacao(context);
     }
 
+    private static int count = 0;
     private void gerarNotificacao(Context context) {
 
         Intent intent = new Intent(context, DetalhesMedicamento.class);
@@ -53,7 +54,7 @@ public class ReceberAlerta extends BroadcastReceiver {
         construirNotificacao.setAutoCancel(true);
 
         NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
-        notificationManager.notify(1, construirNotificacao.build());
+        notificationManager.notify(count++, construirNotificacao.build());
     }
 
     private void criaAtividade(Context context)

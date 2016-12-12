@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.isec.boxreminder.Classes.Medicamento;
@@ -19,6 +20,10 @@ public class ApresentarNotificacao extends Activity
         setContentView(R.layout.activity_apresentar_notificacao);
 
         medicamento = (Medicamento) getIntent().getSerializableExtra("medicamento");
+
+        TextView notificacao = (TextView) findViewById(R.id.textViewNotificação);
+
+        notificacao.setText("São horas de tomar " + medicamento.getNome());
 
         //TODO: layout minimalista                                                              -> FEITO
         //TODO: Alterar "textViewNotificação" para mostrar mensagem específica de medicamento   -> POR FAZER

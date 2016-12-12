@@ -31,6 +31,9 @@ public class InserirQuantidade extends Activity
         //RECEBER O MEDICAMENTO DA ATIVIDADE ANTERIOR
         medicamento = (Medicamento) getIntent().getSerializableExtra("medicamento");
 
+        //registar na stack de actividades para fechar tudo quando se retornar ao menu inicial
+        MainActivity.getActivityStack().add(this);
+
         editTextQuantidade = (EditText) findViewById(R.id.quantidade);
         spinnerUnidade     = (Spinner)  findViewById(R.id.spinnerUnidade);
 

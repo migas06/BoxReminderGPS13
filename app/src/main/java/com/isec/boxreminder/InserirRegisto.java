@@ -26,15 +26,10 @@ public class InserirRegisto extends Activity
 
     EditText editTextNomeMedicamento;
 
-    String nomeFicheiro;
+    String nomeFicheiro = Environment.getExternalStorageDirectory().getAbsolutePath()+"/Notifications/";
     String nomeMedicamentoInserido;
 
     Gravacao novaGravacao;
-
-    public InserirRegisto()
-    {
-        nomeFicheiro = Environment.getExternalStorageDirectory().getAbsolutePath()+"/Notifications/";
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -47,6 +42,9 @@ public class InserirRegisto extends Activity
         if(medicamento == null){
             medicamento  = new Medicamento();
         }
+
+        //registar na stack de actividades para fechar tudo quando se retornar ao menu inicial
+        MainActivity.getActivityStack().add(this);
 
         novaGravacao = null;
 

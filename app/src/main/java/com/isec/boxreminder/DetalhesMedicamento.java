@@ -43,6 +43,8 @@ public class DetalhesMedicamento extends Activity {
 
         medicamento = (Medicamento) getIntent().getSerializableExtra("medicamento");
 
+        MainActivity.getActivityStack().add(this);
+
         textViewNome = (TextView) findViewById(R.id.NomeMedDetalhes);
         textViewQuantidadeETipo = (TextView) findViewById(R.id.DetQuantETipo);
         textViewDataInicio = (TextView) findViewById(R.id.DetDataI);
@@ -91,7 +93,8 @@ public class DetalhesMedicamento extends Activity {
                             //Intent intent = new Intent(context, MainActivity.class);
                             //startActivity(intent);
                             apagarMedicamento();
-                            finish();
+
+                            MainActivity.closeActivitiesInStack();
                         }
                         return true;
                     }

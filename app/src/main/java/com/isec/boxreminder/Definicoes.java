@@ -28,6 +28,8 @@ public class Definicoes extends Activity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_definicoes);
 
+        MainActivity.getActivityStack().add(this);
+
         final EditText mEditText = (EditText) findViewById(R.id.editTextContacto);
         CheckBox checkBox = (CheckBox) findViewById(R.id.checkBoxVoz);
 
@@ -52,11 +54,9 @@ public class Definicoes extends Activity
                     ficheiro.delete();
                     ficheiro.escreverFicheiroContacto(contacto);
                     Toast.makeText(context,"Operação bem sucedida", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(context, MainActivity.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    startActivity(intent);
-                    finish();
 
+                    //fechar esta atividade em vez de abrir uma nova MainActivity
+                    MainActivity.closeActivitiesInStack();
                 }
                 else{
                     AlertDialog.Builder dlgAlert  = new AlertDialog.Builder(context);

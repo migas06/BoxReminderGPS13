@@ -83,6 +83,9 @@ public class Data extends Activity {
         //RECEBER O MEDICAMENTO DA ATIVIDADE ANTERIOR
         medicamento = (Medicamento) getIntent().getSerializableExtra("medicamento");
 
+        //registar na stack de actividades para fechar tudo quando se retornar ao menu inicial
+        MainActivity.getActivityStack().add(this);
+
         //Declaração de variaveis
         editTextDataInicio = (EditText) findViewById(R.id.editTextDataInicio);
         editTextDataFim    = (EditText) findViewById(R.id.editTextDataFim);
@@ -170,9 +173,9 @@ public class Data extends Activity {
                 if (addAoMedicamento()) {
                     medicamento.setEditar(false);
                     inserirNoFicheiro();
-                    Intent intent = new Intent(context, MainActivity.class);
-                    startActivity(intent);
-                    finish();
+
+                    //fechar a sequência de atividades na stack
+                    MainActivity.closeActivitiesInStack();
                 } else {
                     Toast.makeText(context, "Tem de introduzir data e hora válidos", Toast.LENGTH_LONG).show();
                 }

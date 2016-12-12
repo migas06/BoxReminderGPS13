@@ -10,6 +10,9 @@ import android.widget.Button;
 import com.isec.boxreminder.Classes.Ficheiro;
 import com.isec.boxreminder.Classes.Notificacao;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MainActivity extends Activity {
     Ficheiro ficheiro=new Ficheiro();
     Button next;
@@ -18,6 +21,16 @@ public class MainActivity extends Activity {
     Button registos;
 
     Context context;
+
+    private static List<Activity> activityStack = new ArrayList();
+
+    public static List<Activity> getActivityStack() {return activityStack;}
+
+    public static void closeActivitiesInStack()
+    {
+        for(Activity act : activityStack)
+            act.finish();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +79,14 @@ public class MainActivity extends Activity {
             }
         });
 
+    }
+
+    @Override
+    protected void onResume()
+    {
+        super.onResume();
+
+        closeActivitiesInStack();
     }
 
 }

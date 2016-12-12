@@ -26,7 +26,7 @@ public class ApresentarNotificacao extends Activity
         notificacao.setText("Hora de tomar "+medicamento.getNome());
 
         //TODO: layout minimalista                                                              -> FEITO
-        //TODO: Alterar "textViewNotificação" para mostrar mensagem específica de medicamento   -> POR FAZER
+        //TODO: Alterar "textViewNotificação" para mostrar mensagem específica de medicamento   -> FEITO
         //TODO: reproduzir gravação que corresponde ao medicamento                              -> PREENCHER reproduzGravacao()
         //TODO: adicionar listeners para todos os botões físicos que o dispositivo tiver        -> FEITO
 

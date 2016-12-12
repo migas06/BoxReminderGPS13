@@ -9,18 +9,20 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:weightSum="4">
 
         <TextView
             android:paddingTop="16dp"
             android:layout_width="0dp"
-            android:layout_weight="1"
+            android:layout_weight="1.75"
             android:layout_height="wrap_content"
             android:id="@+id/listNomeMedicamento"
             android:textAlignment="center"
-            android:textColor="#999999"
+            android:textColor="#666666"
             android:textSize="20dp"
-            android:text="Medicamento" />
+            android:text="Medicamento"
+            android:textStyle="normal|bold" />
 
         <TextView
             android:paddingTop="16dp"
@@ -30,8 +32,9 @@
             android:id="@+id/listHoraMedicamento"
             android:textAlignment="center"
             android:textSize="16sp"
-            android:textColor="#999999"
-            android:text="HoraMed"/>
+            android:textColor="#666666"
+            android:text="HoraMed"
+            android:textStyle="normal|bold" />
 
         <TextView
             android:paddingTop="16dp"
@@ -41,22 +44,23 @@
             android:id="@+id/listDataMedicamento"
             android:textAlignment="center"
             android:textSize="16sp"
-            android:textColor="#999999"
-            android:text="DataMed"/>
+            android:textColor="#666666"
+            android:text="DataMed"
+            android:textStyle="normal|bold" />
 
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:paddingTop="15dp">
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:background="#999999"/>
+            android:background="#999999"
+            android:layout_height="1dp" />
 
     </LinearLayout>
 

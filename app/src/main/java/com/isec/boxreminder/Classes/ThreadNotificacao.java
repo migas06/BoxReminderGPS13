@@ -13,6 +13,7 @@ public class ThreadNotificacao extends Thread{
     Medicamento medicamento;
 
     boolean esperaClick = false;
+    boolean notificado = false;
 
     Context context;
 
@@ -27,16 +28,16 @@ public class ThreadNotificacao extends Thread{
     public void run() {
 
         long notificarDaquiA = new GregorianCalendar().getTimeInMillis()+(mins)*1000;
-        while(true){
+        while(!notificado){
 
             if(isEsperaClick())
                 break;
 
             else{
-                if((new GregorianCalendar().getTimeInMillis())>= notificarDaquiA){
+                if((new GregorianCalendar().getTimeInMillis())>= notificarDaquiA && !notificado){
                     Notificacao notificacao = new Notificacao(context, medicamento);
                     notificacao.sendSms();
-                    break;
+                    notificado = true;
                 }
             }
         }

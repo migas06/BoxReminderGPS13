@@ -41,9 +41,7 @@ public class ApresentarNotificacao extends Activity
         //TODO: adicionar listeners para todos os botões físicos que o dispositivo tiver        -> FEITO
 
         gravacao.reproduzGravacaoComLoop();
-
-
-
+        
         //OnClickListener partilhado por todos os componentes na atividade
         View.OnClickListener clickListener = new View.OnClickListener()
         {
@@ -51,8 +49,6 @@ public class ApresentarNotificacao extends Activity
             public void onClick(View v)
             {
                 //sair assim que qualquer porção do ecrã seja premida
-                threadNotificacao.setEsperaClick(true);
-                gravacao.stopReproducao();
                 finish();
             }
         };
@@ -72,7 +68,6 @@ public class ApresentarNotificacao extends Activity
     {
         //sair assim que qualquer botão tenha sido premido
         finish();
-
         return super.onKeyDown(keyCode, event);
     }
 
@@ -83,5 +78,7 @@ public class ApresentarNotificacao extends Activity
 
         //ao sair, interromper a reprodução
         paraReproducao();
+        threadNotificacao.setEsperaClick(true);
+        gravacao.stopReproducao();
     }
 }

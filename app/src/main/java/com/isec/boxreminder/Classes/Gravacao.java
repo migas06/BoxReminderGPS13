@@ -45,6 +45,20 @@ public class Gravacao {
         try {
             reproducao = new MediaPlayer();
             reproducao.setDataSource(caminhoFicheiro);
+            reproducao.setLooping(false);
+            reproducao.prepare();
+            reproducao.start();
+        } catch (IOException e) {
+            Log.e("REPRODUCAO", e.toString());
+        }
+    }
+
+    public void reproduzGravacaoComLoop(){
+
+        try {
+            reproducao = new MediaPlayer();
+            reproducao.setDataSource(caminhoFicheiro);
+            reproducao.setLooping(true);
             reproducao.prepare();
             reproducao.start();
         } catch (IOException e) {
@@ -54,5 +68,11 @@ public class Gravacao {
 
     public void setCaminhoFicheiro(String caminhoFicheiro) {
         this.caminhoFicheiro = caminhoFicheiro;
+    }
+
+    public void stopReproducao() {
+        reproducao.stop();
+        reproducao.release();
+        reproducao = null;
     }
 }

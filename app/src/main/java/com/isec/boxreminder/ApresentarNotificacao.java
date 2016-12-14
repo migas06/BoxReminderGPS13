@@ -7,11 +7,15 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.isec.boxreminder.Classes.Gravacao;
 import com.isec.boxreminder.Classes.Medicamento;
+import com.isec.boxreminder.Classes.ThreadNotificacao;
 
 public class ApresentarNotificacao extends Activity
 {
     private Medicamento medicamento;
+    private Gravacao gravacao;
+    ThreadNotificacao threadNotificacao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -21,16 +25,24 @@ public class ApresentarNotificacao extends Activity
 
         medicamento = (Medicamento) getIntent().getSerializableExtra("medicamento");
 
+        threadNotificacao = new ThreadNotificacao(medicamento, this);
+        threadNotificacao.start();
+
+        gravacao = new Gravacao();
+        gravacao.setCaminhoFicheiro(medicamento.getCaminhoGravacao());
+
         TextView notificacao = (TextView) findViewById(R.id.textViewNotificação);
 
         notificacao.setText("Hora de tomar "+medicamento.getNome());
 
         //TODO: layout minimalista                                                              -> FEITO
         //TODO: Alterar "textViewNotificação" para mostrar mensagem específica de medicamento   -> FEITO
-        //TODO: reproduzir gravação que corresponde ao medicamento                              -> PREENCHER reproduzGravacao()
+        //TODO: reproduzir gravação que corresponde ao medicamento                              -> FEITO -> was me Mario ohohoh
         //TODO: adicionar listeners para todos os botões físicos que o dispositivo tiver        -> FEITO
 
-        reproduzGravacao();
+        gravacao.reproduzGravacaoComLoop();
+
+
 
         //OnClickListener partilhado por todos os componentes na atividade
         View.OnClickListener clickListener = new View.OnClickListener()
@@ -39,6 +51,8 @@ public class ApresentarNotificacao extends Activity
             public void onClick(View v)
             {
                 //sair assim que qualquer porção do ecrã seja premida
+                threadNotificacao.setEsperaClick(true);
+                gravacao.stopReproducao();
                 finish();
             }
         };
@@ -46,12 +60,6 @@ public class ApresentarNotificacao extends Activity
         findViewById(R.id.activity_apresentar_notificacao).setOnClickListener(clickListener);
         findViewById(R.id.layout_background).setOnClickListener(clickListener);
         findViewById(R.id.textViewNotificação).setOnClickListener(clickListener);
-    }
-
-    private void reproduzGravacao()
-    {
-        //Cria thread para fazer Loop pela gravação a cada X segundos/minutos?
-
     }
 
     private void paraReproducao()

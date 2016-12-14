@@ -19,6 +19,8 @@ public class Notificacao {
     private Context context;
     private String mensagem;
 
+    Ficheiro ficheiro = new Ficheiro();
+
     private java.text.DateFormat hourFormat = new SimpleDateFormat("HH:mm");
 
     public Notificacao(Context context, Medicamento medicamento){
@@ -37,7 +39,7 @@ public class Notificacao {
 
         try {
             SmsManager smsManager = SmsManager.getDefault();
-            smsManager.sendTextMessage("913381439", null, mensagem, null, null);
+            smsManager.sendTextMessage(ficheiro.lerContacto().toString(), null, mensagem, null, null);
         } catch (Exception e) {
             e.printStackTrace();
         }

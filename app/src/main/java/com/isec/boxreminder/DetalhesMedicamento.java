@@ -117,23 +117,30 @@ public class DetalhesMedicamento extends Activity {
     }
 
     private String criarFrequencia() {
+
         String frequencia = "";
 
-        if(medicamento.getRepeticao(0) == true)
-            frequencia += "Seg ";
-        if(medicamento.getRepeticao(1) == true)
-            frequencia += "Ter ";
-        if(medicamento.getRepeticao(2) == true)
-            frequencia += "Qua ";
-        if(medicamento.getRepeticao(3) == true)
-            frequencia += "Qui ";
-        if(medicamento.getRepeticao(4) == true)
-            frequencia += "Sex ";
-        if(medicamento.getRepeticao(5) == true)
-            frequencia += "Sab ";
-        if(medicamento.getRepeticao(6) == true)
-            frequencia += "Dom ";
+        if(medicamento.getFrequencia().equals("")) {
 
+            if (medicamento.getRepeticao(0) == true)
+                frequencia += "Seg ";
+            if (medicamento.getRepeticao(1) == true)
+                frequencia += "Ter ";
+            if (medicamento.getRepeticao(2) == true)
+                frequencia += "Qua ";
+            if (medicamento.getRepeticao(3) == true)
+                frequencia += "Qui ";
+            if (medicamento.getRepeticao(4) == true)
+                frequencia += "Sex ";
+            if (medicamento.getRepeticao(5) == true)
+                frequencia += "Sab ";
+            if (medicamento.getRepeticao(6) == true)
+                frequencia += "Dom ";
+        }
+
+        else {
+            frequencia = medicamento.getFrequencia();
+        }
         return frequencia;
     }
 }

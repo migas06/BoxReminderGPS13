@@ -29,6 +29,7 @@
         <activity android:name=".VerRegistos" />
         <activity android:name=".DetalhesMedicamento" />
         <activity android:name=".Inicial" />
+        <activity android:name=".ApresentarNotificacao" android:theme="@style/Theme.Transparent" />
 
         <receiver android:name=".Widget.SOSPhone">
             <intent-filter>
@@ -39,11 +40,10 @@
                 android:name="android.appwidget.provider"
                 android:resource="@xml/sosphone_info" />
         </receiver>
+
         <receiver
             android:name=".Classes.ReceberAlerta"
             android:process=":remote" />
-
-        <activity android:name=".ApresentarNotificacao" android:theme="@style/Theme.Transparent" />
     </application>
 
 </manifest>

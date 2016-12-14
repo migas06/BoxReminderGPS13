@@ -16,6 +16,7 @@ import android.widget.CompoundButton;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.Toast;
 
@@ -65,7 +66,7 @@ public class Data extends Activity {
     private Button next;
     private Context context = this;
 
-    private Switch switchDataLimite;
+    private Spinner frequencia;
 
     private Medicamento medicamento;
 
@@ -92,6 +93,9 @@ public class Data extends Activity {
         editTextHora       = (EditText) findViewById(R.id.horas);
         editTextMin        = (EditText) findViewById(R.id.minutos);
 
+        frequencia         = (Spinner) findViewById(R.id.spinnerRepeticao);
+
+
         editTextDataInicio.setText(startDay + "-" + startMonth + "-" + startYear);
         editTextDataFim.setText(startDay + "-" + startMonth + "-" + startYear);
 
@@ -106,16 +110,7 @@ public class Data extends Activity {
         dataInicio = (ImageView) findViewById(R.id.imagemDataInicio);
         dataFim    = (ImageView) findViewById(R.id.imagemDataFim);
 
-        switchDataLimite = (Switch) findViewById(R.id.switchDataLimite);
-
-        switchDataLimite.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
-        {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked)
-            {
-                dataFim.setEnabled(isChecked);
-            }
-        });
+        frequenciaSpinner();
 
         if(medicamento.isEditar()){
             //editTextDataInicio.setText();
@@ -188,6 +183,20 @@ public class Data extends Activity {
         });
     }
 
+    private void frequenciaSpinner() {
+
+        if(frequencia.getSelectedItem().toString().equals("Mensalmente")){
+            medicamento.setFrequencia("Mensal");
+        }else if(frequencia.getSelectedItem().toString().equals("Diáriamente")){
+            medicamento.setFrequencia("Diário");
+        }else if(frequencia.getSelectedItem().toString().equals("Semanalmente")){
+            medicamento.setFrequencia("Semanal");
+        }else{
+            medicamento.setFrequencia("");
+        }
+    }
+
+
     private boolean addAoMedicamento() {
 
         //CRIAR DATA E HORA
@@ -203,6 +212,8 @@ public class Data extends Activity {
         } catch (ParseException e) {
             return false;
         }
+        medicamento.gerarAlarmes(context);
+
         return true;
     }
 
@@ -232,7 +243,7 @@ public class Data extends Activity {
         Ficheiro ficheiro = new Ficheiro();
         ficheiro.lerFicheiro();
 
-        List<Medicamento> meds = ficheiro.getLista();
+        ArrayList<Medicamento> meds = ficheiro.getLista();
 
         if(meds.contains(medicamento))
         {

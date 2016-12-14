@@ -29,9 +29,9 @@
     <string name="hora">Hora</string>
 
     <string-array name="Repetir">
+        <item>Diáriamente</item>
         <item>Escolher Opções</item>
         <item>Semanalmente</item>
-        <item>Diáriamente</item>
         <item>Mensalmente</item>
     </string-array>
 

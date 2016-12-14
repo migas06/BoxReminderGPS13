@@ -1,6 +1,7 @@
 package com.isec.boxreminder.Classes;
 
 
+import android.content.Context;
 import android.text.format.Time;
 
 import java.io.Serializable;
@@ -20,6 +21,7 @@ public class Medicamento implements Serializable{
     private String quantidade;
     private String tipoQuantidade;
     private String caminhoGravacao;
+    private String frequencia;
     private int id;
 
     private static int contador = 0;
@@ -36,8 +38,6 @@ public class Medicamento implements Serializable{
     }
 
     boolean [] repeticao = new boolean[7];
-
-    //GETTERS AND SETTERS
 
     public String getNome() {
         return nome;
@@ -103,6 +103,14 @@ public class Medicamento implements Serializable{
             this.repeticao = repeticao;
     }
 
+    public String getFrequencia() {
+        return frequencia;
+    }
+
+    public void setFrequencia(String frequencia) {
+        this.frequencia = frequencia;
+    }
+
     @Override
     public boolean equals(Object obj)
     {
@@ -112,5 +120,9 @@ public class Medicamento implements Serializable{
         Medicamento med = (Medicamento) obj;
 
         return id == med.id;
+    }
+
+    public void gerarAlarmes(Context context){
+        Alarme alarme = new Alarme(context, this);
     }
 }

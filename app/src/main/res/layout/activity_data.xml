@@ -111,8 +111,7 @@
     <!-- SPINNER OPCOES -->
     <Spinner
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_height="wrap_content"
         android:textColor="#999999"
         android:id="@+id/spinnerRepeticao"
         android:entries="@array/Repetir">
@@ -124,7 +123,10 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:paddingBottom="12dp"
+        android:paddingTop="12dp"
+        >
 
         <CheckBox
             android:layout_width="0dp"
@@ -135,6 +137,7 @@
             android:gravity="center"
             android:text="S"
             android:background="@drawable/radioweekday"
+
             />
 
         <CheckBox
@@ -201,26 +204,7 @@
 
     <!-- DATA LIMITE -->
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="horizontal">
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="match_parent"
-            android:gravity="center_vertical"
-            android:textColor="#999999"
-            android:text= "@string/dataLimite"/>
-
-        <Switch
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="match_parent"
-            android:id="@+id/switchDataLimite"/>
-    </LinearLayout>
 
     <!-- DATA FIM -->
 
@@ -263,6 +247,10 @@
         </LinearLayout>
 
     </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"></LinearLayout>
 
     <Button
         android:layout_width="match_parent"
@@ -275,7 +263,6 @@
         android:layout_margin="0dp"
         android:id="@+id/next"
         android:text="@string/proximo" />
-
 
 
 </LinearLayout>

@@ -8,6 +8,13 @@ import android.content.Intent;
 import android.net.Uri;
 import android.widget.RemoteViews;
 
+import com.isec.boxreminder.Classes.Ficheiro;
+import com.isec.boxreminder.R;
+
+/**
+ * Implementation of App Widget functionality.
+ *
+ */
 import com.isec.boxreminder.R;
 
 /**
@@ -16,16 +23,17 @@ import com.isec.boxreminder.R;
  */
 public class SOSPhone extends AppWidgetProvider {
 
+    Ficheiro ficheiro = new Ficheiro();
+
     static void updateAppWidget(Context context, AppWidgetManager appWidgetManager, int appWidgetId) {
 
     }
 
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
-
         for (int appWidgetId : appWidgetIds) {
             Intent callIntent = new Intent(Intent.ACTION_CALL);
-            callIntent.setData(Uri.parse("tel:"+915846731));
+            callIntent.setData(Uri.parse("tel:"+ficheiro.lerContacto()));
             PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, callIntent, 0);
 
             // Get the layout for the App Widget and attach an on-click listener to the button
@@ -37,4 +45,3 @@ public class SOSPhone extends AppWidgetProvider {
         }
     }
 }
-

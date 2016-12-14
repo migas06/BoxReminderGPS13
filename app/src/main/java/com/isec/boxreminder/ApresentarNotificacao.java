@@ -41,7 +41,7 @@ public class ApresentarNotificacao extends Activity
         //TODO: adicionar listeners para todos os botões físicos que o dispositivo tiver        -> FEITO
 
         gravacao.reproduzGravacaoComLoop();
-        
+
         //OnClickListener partilhado por todos os componentes na atividade
         View.OnClickListener clickListener = new View.OnClickListener()
         {

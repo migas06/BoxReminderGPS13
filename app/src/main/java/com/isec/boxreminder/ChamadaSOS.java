@@ -1,4 +1,4 @@
-package com.isec.boxreminder.Widget;
+package com.isec.boxreminder;
 
 import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
@@ -9,19 +9,9 @@ import android.net.Uri;
 import android.widget.RemoteViews;
 
 import com.isec.boxreminder.Classes.Ficheiro;
-import com.isec.boxreminder.R;
 
-/**
- * Implementation of App Widget functionality.
- *
- */
-import com.isec.boxreminder.R;
 
-/**
- * Implementation of App Widget functionality.
- *
- */
-public class SOSPhone extends AppWidgetProvider {
+public class ChamadaSOS extends AppWidgetProvider {
 
     Ficheiro ficheiro = new Ficheiro();
 
@@ -31,13 +21,15 @@ public class SOSPhone extends AppWidgetProvider {
 
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
+
         for (int appWidgetId : appWidgetIds) {
+
             Intent callIntent = new Intent(Intent.ACTION_CALL);
             callIntent.setData(Uri.parse("tel:"+ficheiro.lerContacto()));
             PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, callIntent, 0);
 
             // Get the layout for the App Widget and attach an on-click listener to the button
-            RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.sosphone);
+            RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.chamada_sos);
             views.setOnClickPendingIntent(R.id.sos, pendingIntent);
 
             // Tell the AppWidgetManager to perform an update on the current App Widget
@@ -45,3 +37,4 @@ public class SOSPhone extends AppWidgetProvider {
         }
     }
 }
+

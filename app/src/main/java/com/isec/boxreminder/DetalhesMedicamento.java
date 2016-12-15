@@ -66,7 +66,7 @@ public class DetalhesMedicamento extends Activity {
             @Override
             public void onClick(View view) {
                 Alarme alarme=new Alarme(context, medicamento);
-                alarme.criaAlarme();
+                alarme.criaAlarmeDiario();
             }
         });
 

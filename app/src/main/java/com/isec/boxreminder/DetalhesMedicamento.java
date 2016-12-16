@@ -90,8 +90,6 @@ public class DetalhesMedicamento extends Activity {
                         }
                         if(item.getTitle().equals("Eliminar")){
 
-                            //Intent intent = new Intent(context, MainActivity.class);
-                            //startActivity(intent);
                             apagarMedicamento();
 
                             MainActivity.closeActivitiesInStack();

@@ -129,13 +129,10 @@ public class VerRegistos extends Activity {
         TextView tvNoMatches = (TextView) findViewById(R.id.tvNoSearchMatches);
         listView = (ListView) findViewById(R.id.listRegisto);
 
-        LinearLayout.LayoutParams paramsHidden = new LinearLayout.LayoutParams(0, 0);
-        LinearLayout.LayoutParams paramsMatchParent = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
-
         if(!medsPesquisa.isEmpty())
         {
-            tvNoMatches.setLayoutParams(paramsHidden);
-            listView.setLayoutParams(paramsMatchParent);
+            tvNoMatches.setVisibility(View.GONE);
+            listView.setVisibility(View.VISIBLE);
 
             ArrayAdapter<Medicamento> adapta = new MinhaListaAdaptavel(context, medsPesquisa);
 
@@ -151,8 +148,8 @@ public class VerRegistos extends Activity {
         }
         else
         {
-            listView.setLayoutParams(paramsHidden);
-            tvNoMatches.setLayoutParams(paramsMatchParent);
+            listView.setVisibility(View.GONE);
+            tvNoMatches.setVisibility(View.VISIBLE);
 
             tvNoMatches.setText("Medicamento \"" + query + "\" não encontrado");
         }

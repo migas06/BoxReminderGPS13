@@ -44,13 +44,13 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_marginBottom="10dp"
-            >
+            android:visibility="visible">
         </ListView>
 
         <TextView
             android:text=""
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="match_parent"
             android:id="@+id/tvNoSearchMatches"
             android:layout_weight="1"
             android:layout_gravity="center_horizontal"
@@ -58,7 +58,8 @@
             android:textSize="20sp"
             android:textColor="#666666"
             android:textStyle="normal|bold"
-            android:layout_margin="15dp" />
+            android:layout_margin="15dp"
+            android:visibility="gone" />
     </LinearLayout>
 
 </LinearLayout>

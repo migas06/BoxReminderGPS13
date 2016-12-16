@@ -28,7 +28,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
@@ -36,7 +36,7 @@
 
         <ListView
             android:id="@+id/listRegisto"
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:divider="#b5b5b5"
             android:dividerHeight="5dp"
@@ -46,6 +46,19 @@
             android:layout_marginBottom="10dp"
             >
         </ListView>
+
+        <TextView
+            android:text=""
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:id="@+id/tvNoSearchMatches"
+            android:layout_weight="1"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal"
+            android:textSize="20sp"
+            android:textColor="#666666"
+            android:textStyle="normal|bold"
+            android:layout_margin="15dp" />
     </LinearLayout>
 
 </LinearLayout>
